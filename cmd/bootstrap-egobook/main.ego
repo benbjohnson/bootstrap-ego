@@ -1,0 +1,30 @@
+<%
+package main
+
+import (
+	"os"
+	"fmt"
+
+	. "github.com/benbjohnson/egobook"
+	. "github.com/benbjohnson/bootstrap-ego"
+)
+
+func main() { 
+	m := &Main{
+		Title: "Bootstrap 4",
+		Modules: []*Modules{
+		{
+			Name:"Alert",
+			Stories: []*Story{
+				{Name: "Default", Render:RenderAlert},
+			},
+		},
+	}
+	
+	if err := m.Run(os.Args[1:]); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+}
+
+func RenderAlert(ctx context.Context, w io.Writer) { %><ego:Alert>Hello</ego:Alert><% } %>
