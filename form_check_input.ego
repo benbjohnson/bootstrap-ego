@@ -1,0 +1,10 @@
+<%
+package bootstrap
+
+type FormCheckInput struct {
+	Yield func()
+}
+
+func (c *FormCheckInput) Render(ctx context.Context, w io.Writer) { %>
+
+<% } %>

@@ -1,0 +1,10 @@
+<%
+package bootstrap
+
+type Progress struct {
+	Yield func()
+}
+
+func (c *Progress) Render(ctx context.Context, w io.Writer) { %>
+
+<% } %>

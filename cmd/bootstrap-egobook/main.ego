@@ -1,30 +1,141 @@
 <%
 package main
 
-import (
-	"os"
-	"fmt"
+import "github.com/benbjohnson/bootstrap-ego"
 
-	. "github.com/benbjohnson/egobook"
-	. "github.com/benbjohnson/bootstrap-ego"
-)
+func RenderAlert(ctx context.Context, w io.Writer) { %>
+	<bootstrap:Alert>Hello</bootstrap:Alert>
+<% }
 
-func main() { 
-	m := &Main{
-		Title: "Bootstrap 4",
-		Modules: []*Modules{
-		{
-			Name:"Alert",
-			Stories: []*Story{
-				{Name: "Default", Render:RenderAlert},
-			},
-		},
-	}
-	
-	if err := m.Run(os.Args[1:]); err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
-	}
-}
+func RenderBadge(ctx context.Context, w io.Writer) { %>
+	<bootstrap:Badge></bootstrap:Badge>
+<% }
 
-func RenderAlert(ctx context.Context, w io.Writer) { %><ego:Alert>Hello</ego:Alert><% } %>
+func RenderBreadcrumb(ctx context.Context, w io.Writer) { %>
+	<bootstrap:Breadcrumb></bootstrap:Breadcrumb>
+<% }
+
+func RenderButton(ctx context.Context, w io.Writer) { %>
+	<bootstrap:Button></bootstrap:Button>
+<% }
+
+func RenderButtonGroup(ctx context.Context, w io.Writer) { %>
+	<bootstrap:ButtonGroup></bootstrap:ButtonGroup>
+<% }
+
+func RenderCard(ctx context.Context, w io.Writer) { %>
+	<bootstrap:Card></bootstrap:Card>
+<% }
+
+func RenderCardColumns(ctx context.Context, w io.Writer) { %>
+	<bootstrap:CardColumns></bootstrap:CardColumns>
+<% }
+
+func RenderCardDeck(ctx context.Context, w io.Writer) { %>
+	<bootstrap:CardDeck></bootstrap:CardDeck>
+<% }
+
+func RenderCarousel(ctx context.Context, w io.Writer) { %>
+	<bootstrap:Carousel></bootstrap:Carousel>
+<% }
+
+func RenderCollapse(ctx context.Context, w io.Writer) { %>
+	<bootstrap:Collapse></bootstrap:Collapse>
+<% }
+
+func RenderDropdown(ctx context.Context, w io.Writer) { %>
+	<bootstrap:Dropdown></bootstrap:Dropdown>
+<% }
+
+func RenderDropdownHeader(ctx context.Context, w io.Writer) { %>
+	<bootstrap:DropdownHeader></bootstrap:DropdownHeader>
+<% }
+
+func RenderDropdownItem(ctx context.Context, w io.Writer) { %>
+	<bootstrap:DropdownItem></bootstrap:DropdownItem>
+<% }
+
+func RenderDropdownMenu(ctx context.Context, w io.Writer) { %>
+	<bootstrap:DropdownMenu></bootstrap:DropdownMenu>
+<% }
+
+func RenderForm(ctx context.Context, w io.Writer) { %>
+	<bootstrap:Form></bootstrap:Form>
+<% }
+
+func RenderFormCheck(ctx context.Context, w io.Writer) { %>
+	<bootstrap:FormCheck></bootstrap:FormCheck>
+<% }
+
+func RenderFormCheckInput(ctx context.Context, w io.Writer) { %>
+	<bootstrap:FormCheckInput></bootstrap:FormCheckInput>
+<% }
+
+func RenderFormControl(ctx context.Context, w io.Writer) { %>
+	<bootstrap:FormControl></bootstrap:FormControl>
+<% }
+
+func RenderFormControlFile(ctx context.Context, w io.Writer) { %>
+	<bootstrap:FormControlFile></bootstrap:FormControlFile>
+<% }
+
+func RenderFormGroup(ctx context.Context, w io.Writer) { %>
+	<bootstrap:FormGroup></bootstrap:FormGroup>
+<% }
+
+func RenderFormRow(ctx context.Context, w io.Writer) { %>
+	<bootstrap:FormRow></bootstrap:FormRow>
+<% }
+
+func RenderFormText(ctx context.Context, w io.Writer) { %>
+	<bootstrap:FormText></bootstrap:FormText>
+<% }
+
+func RenderInputGroup(ctx context.Context, w io.Writer) { %>
+	<bootstrap:InputGroup></bootstrap:InputGroup>
+<% }
+
+func RenderJumbotron(ctx context.Context, w io.Writer) { %>
+	<bootstrap:Jumbotron></bootstrap:Jumbotron>
+<% }
+
+func RenderListGroup(ctx context.Context, w io.Writer) { %>
+	<bootstrap:ListGroup></bootstrap:ListGroup>
+<% }
+
+func RenderListGroupItem(ctx context.Context, w io.Writer) { %>
+	<bootstrap:ListGroupItem></bootstrap:ListGroupItem>
+<% }
+
+func RenderModal(ctx context.Context, w io.Writer) { %>
+	<bootstrap:Modal></bootstrap:Modal>
+<% }
+
+func RenderNav(ctx context.Context, w io.Writer) { %>
+	<bootstrap:Nav></bootstrap:Nav>
+<% }
+
+func RenderNavbar(ctx context.Context, w io.Writer) { %>
+	<bootstrap:Navbar></bootstrap:Navbar>
+<% }
+
+func RenderPagination(ctx context.Context, w io.Writer) { %>
+	<bootstrap:Pagination></bootstrap:Pagination>
+<% }
+
+func RenderPills(ctx context.Context, w io.Writer) { %>
+	<bootstrap:Pills></bootstrap:Pills>
+<% }
+
+func RenderPopover(ctx context.Context, w io.Writer) { %>
+	<bootstrap:Popover></bootstrap:Popover>
+<% }
+
+func RenderProgress(ctx context.Context, w io.Writer) { %>
+	<bootstrap:Progress></bootstrap:Progress>
+<% }
+
+func RenderTabs(ctx context.Context, w io.Writer) { %>
+	<bootstrap:Tabs></bootstrap:Tabs>
+<% } %>
+

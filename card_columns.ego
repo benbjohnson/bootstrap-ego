@@ -1,0 +1,10 @@
+<%
+package bootstrap
+
+type CardColumns struct {
+	Yield func()
+}
+
+func (c *CardColumns) Render(ctx context.Context, w io.Writer) { %>
+
+<% } %>

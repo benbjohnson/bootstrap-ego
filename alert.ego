@@ -1,0 +1,10 @@
+<%
+package bootstrap
+
+type Alert struct {
+	Yield func()
+}
+
+func (c *Alert) Render(ctx context.Context, w io.Writer) { %>
+
+<% } %>

@@ -1,0 +1,10 @@
+<%
+package bootstrap
+
+type ListGroup struct {
+	Yield func()
+}
+
+func (c *ListGroup) Render(ctx context.Context, w io.Writer) { %>
+
+<% } %>

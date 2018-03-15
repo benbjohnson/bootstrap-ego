@@ -1,0 +1,10 @@
+<%
+package bootstrap
+
+type CardDeck struct {
+	Yield func()
+}
+
+func (c *CardDeck) Render(ctx context.Context, w io.Writer) { %>
+
+<% } %>

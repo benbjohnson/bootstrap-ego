@@ -1,0 +1,10 @@
+<%
+package bootstrap
+
+type Form struct {
+	Yield func()
+}
+
+func (c *Form) Render(ctx context.Context, w io.Writer) { %>
+
+<% } %>

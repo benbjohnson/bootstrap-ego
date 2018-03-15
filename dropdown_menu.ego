@@ -1,0 +1,10 @@
+<%
+package bootstrap
+
+type DropdownMenu struct {
+	Yield func()
+}
+
+func (c *DropdownMenu) Render(ctx context.Context, w io.Writer) { %>
+
+<% } %>

@@ -1,0 +1,10 @@
+<%
+package bootstrap
+
+type Popover struct {
+	Yield func()
+}
+
+func (c *Popover) Render(ctx context.Context, w io.Writer) { %>
+
+<% } %>

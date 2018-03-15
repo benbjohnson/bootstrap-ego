@@ -1,0 +1,10 @@
+<%
+package bootstrap
+
+type Modal struct {
+	Yield func()
+}
+
+func (c *Modal) Render(ctx context.Context, w io.Writer) { %>
+
+<% } %>

@@ -1,0 +1,10 @@
+<%
+package bootstrap
+
+type Carousel struct {
+	Yield func()
+}
+
+func (c *Carousel) Render(ctx context.Context, w io.Writer) { %>
+
+<% } %>

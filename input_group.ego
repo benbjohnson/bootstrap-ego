@@ -1,0 +1,10 @@
+<%
+package bootstrap
+
+type InputGroup struct {
+	Yield func()
+}
+
+func (c *InputGroup) Render(ctx context.Context, w io.Writer) { %>
+
+<% } %>

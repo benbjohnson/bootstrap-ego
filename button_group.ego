@@ -1,0 +1,10 @@
+<%
+package bootstrap
+
+type ButtonGroup struct {
+	Yield func()
+}
+
+func (c *ButtonGroup) Render(ctx context.Context, w io.Writer) { %>
+
+<% } %>

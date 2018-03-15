@@ -1,0 +1,10 @@
+<%
+package bootstrap
+
+type Nav struct {
+	Yield func()
+}
+
+func (c *Nav) Render(ctx context.Context, w io.Writer) { %>
+
+<% } %>

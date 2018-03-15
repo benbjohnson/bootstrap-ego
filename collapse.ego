@@ -1,0 +1,10 @@
+<%
+package bootstrap
+
+type Collapse struct {
+	Yield func()
+}
+
+func (c *Collapse) Render(ctx context.Context, w io.Writer) { %>
+
+<% } %>

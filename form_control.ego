@@ -1,0 +1,10 @@
+<%
+package bootstrap
+
+type FormControl struct {
+	Yield func()
+}
+
+func (c *FormControl) Render(ctx context.Context, w io.Writer) { %>
+
+<% } %>
