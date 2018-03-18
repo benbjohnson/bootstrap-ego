@@ -11,7 +11,7 @@ func Head(ctx context.Context, w io.Writer) { %>
 <% }
 
 func AlertRenderer(style string) func(ctx context.Context, w io.Writer) { 
-return func(ctx context.Context, w io.Writer) { %>
+	return func(ctx context.Context, w io.Writer) { %>
 <bootstrap:Alert Style=style>
 	This is a <%= style %> alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
 </bootstrap:Alert>
@@ -27,6 +27,22 @@ return func(ctx context.Context, w io.Writer) { %>
 	<strong>Holy guacamole!</strong> You should check in on some of those fields below.
 	<bootstrap:CloseButton/>
 </bootstrap:Alert>
+<% }
+}
+
+func BadgeRenderer(style string) func(ctx context.Context, w io.Writer) { 
+	return func(ctx context.Context, w io.Writer) { %>
+<h1>Example heading <bootstrap:Badge Style=style>New</bootstrap:Badge></h1>
+<h2>Example heading <bootstrap:Badge Style=style>New</bootstrap:Badge></h2>
+<h3>Example heading <bootstrap:Badge Style=style>New</bootstrap:Badge></h3>
+<h4>Example heading <bootstrap:Badge Style=style>New</bootstrap:Badge></h4>
+<h5>Example heading <bootstrap:Badge Style=style>New</bootstrap:Badge></h5>
+<h6>Example heading <bootstrap:Badge Style=style>New</bootstrap:Badge></h6>
+
+<p>
+	<bootstrap:Badge Style=style><%= style %></bootstrap:Badge>
+	<bootstrap:Badge Style=style Pill><%= style %></bootstrap:Badge>
+</p>
 <% }
 }
 

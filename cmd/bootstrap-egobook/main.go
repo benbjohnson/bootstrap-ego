@@ -26,6 +26,19 @@ func main() {
 					{Name: "Dark", Render: AlertRenderer("dark")},
 				},
 			},
+			{
+				Name: "Badge",
+				Stories: []*egobook.Story{
+					{Name: "Primary", Render: BadgeRenderer("primary")},
+					{Name: "Secondary", Render: BadgeRenderer("secondary")},
+					{Name: "Success", Render: BadgeRenderer("success")},
+					{Name: "Danger", Render: BadgeRenderer("danger")},
+					{Name: "Warning", Render: BadgeRenderer("warning")},
+					{Name: "Info", Render: BadgeRenderer("info")},
+					{Name: "Light", Render: BadgeRenderer("light")},
+					{Name: "Dark", Render: BadgeRenderer("dark")},
+				},
+			},
 		},
 	}
 

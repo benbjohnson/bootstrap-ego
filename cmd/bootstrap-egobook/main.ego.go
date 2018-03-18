@@ -75,6 +75,119 @@ func AlertRenderer(style string) func(ctx context.Context, w io.Writer) {
 	}
 }
 
+func BadgeRenderer(style string) func(ctx context.Context, w io.Writer) {
+	return func(ctx context.Context, w io.Writer) {
+//line main.ego:35
+		_, _ = io.WriteString(w, "\n<h1>Example heading ")
+//line main.ego:35
+		{
+			egoComponent := bootstrap.Badge{
+				Style: style,
+				Yield: func() {
+//line main.ego:35
+					_, _ = io.WriteString(w, "New")
+				},
+			}
+			egoComponent.Render(ctx, w)
+		}
+//line main.ego:35
+		_, _ = io.WriteString(w, "</h1>\n<h2>Example heading ")
+//line main.ego:36
+		{
+			egoComponent := bootstrap.Badge{
+				Style: style,
+				Yield: func() {
+//line main.ego:36
+					_, _ = io.WriteString(w, "New")
+				},
+			}
+			egoComponent.Render(ctx, w)
+		}
+//line main.ego:36
+		_, _ = io.WriteString(w, "</h2>\n<h3>Example heading ")
+//line main.ego:37
+		{
+			egoComponent := bootstrap.Badge{
+				Style: style,
+				Yield: func() {
+//line main.ego:37
+					_, _ = io.WriteString(w, "New")
+				},
+			}
+			egoComponent.Render(ctx, w)
+		}
+//line main.ego:37
+		_, _ = io.WriteString(w, "</h3>\n<h4>Example heading ")
+//line main.ego:38
+		{
+			egoComponent := bootstrap.Badge{
+				Style: style,
+				Yield: func() {
+//line main.ego:38
+					_, _ = io.WriteString(w, "New")
+				},
+			}
+			egoComponent.Render(ctx, w)
+		}
+//line main.ego:38
+		_, _ = io.WriteString(w, "</h4>\n<h5>Example heading ")
+//line main.ego:39
+		{
+			egoComponent := bootstrap.Badge{
+				Style: style,
+				Yield: func() {
+//line main.ego:39
+					_, _ = io.WriteString(w, "New")
+				},
+			}
+			egoComponent.Render(ctx, w)
+		}
+//line main.ego:39
+		_, _ = io.WriteString(w, "</h5>\n<h6>Example heading ")
+//line main.ego:40
+		{
+			egoComponent := bootstrap.Badge{
+				Style: style,
+				Yield: func() {
+//line main.ego:40
+					_, _ = io.WriteString(w, "New")
+				},
+			}
+			egoComponent.Render(ctx, w)
+		}
+//line main.ego:40
+		_, _ = io.WriteString(w, "</h6>\n\n<p>\n\t")
+//line main.ego:43
+		{
+			egoComponent := bootstrap.Badge{
+				Style: style,
+				Yield: func() {
+//line main.ego:43
+					_, _ = io.WriteString(w, html.EscapeString(fmt.Sprint(style)))
+				},
+			}
+			egoComponent.Render(ctx, w)
+		}
+//line main.ego:44
+		_, _ = io.WriteString(w, "\n\t")
+//line main.ego:44
+		{
+			egoComponent := bootstrap.Badge{
+				Style: style,
+				Pill:  true,
+				Yield: func() {
+//line main.ego:44
+					_, _ = io.WriteString(w, html.EscapeString(fmt.Sprint(style)))
+				},
+			}
+			egoComponent.Render(ctx, w)
+		}
+//line main.ego:45
+		_, _ = io.WriteString(w, "\n</p>\n")
+//line main.ego:46
+	}
+}
+
 var _ fmt.Stringer
 var _ io.Reader
 var _ context.Context
