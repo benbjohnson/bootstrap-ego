@@ -7,9 +7,8 @@ import (
 )
 
 type CloseButton struct {
-	Class     string
-	Dismiss   string
-	ARIALabel string
+	Class   string
+	Dismiss string
 }
 
 func (c *CloseButton) Render(ctx context.Context, w io.Writer) {
@@ -25,10 +24,8 @@ func (c *CloseButton) Render(ctx context.Context, w io.Writer) {
 	}
 	io.WriteString(w, `"`)
 
-	// Render ARIA label.
-	io.WriteString(w, ` aria-label="`)
-	io.WriteString(w, html.EscapeString(c.ARIALabel))
-	io.WriteString(w, `"`)
+	// Write accessible label.
+	io.WriteString(w, ` aria-label="Close"`)
 
 	// Close tag.
 	io.WriteString(w, `><span aria-hidden="true">&times;</span></button>`)

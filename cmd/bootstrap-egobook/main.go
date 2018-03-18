@@ -39,6 +39,12 @@ func main() {
 					{Name: "Dark", Render: BadgeRenderer("dark")},
 				},
 			},
+			{
+				Name: "Breadcrumb",
+				Stories: []*egobook.Story{
+					{Name: "Default", Render: RenderBreadcrumb},
+				},
+			},
 		},
 	}
 

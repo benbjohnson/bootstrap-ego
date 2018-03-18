@@ -188,6 +188,53 @@ func BadgeRenderer(style string) func(ctx context.Context, w io.Writer) {
 	}
 }
 
+func RenderBreadcrumb(ctx context.Context, w io.Writer) {
+//line main.ego:50
+	_, _ = io.WriteString(w, "\n<nav aria-label=\"breadcrumb\">\n\t")
+//line main.ego:51
+	{
+		egoComponent := bootstrap.Breadcrumb{
+			Yield: func() {
+//line main.ego:52
+				{
+					egoComponent := bootstrap.BreadcrumbItem{
+						Yield: func() {
+//line main.ego:52
+							_, _ = io.WriteString(w, "<a href=\"#\">Home</a>")
+						},
+					}
+					egoComponent.Render(ctx, w)
+				}
+//line main.ego:53
+				{
+					egoComponent := bootstrap.BreadcrumbItem{
+						Yield: func() {
+//line main.ego:53
+							_, _ = io.WriteString(w, "<a href=\"#\">Library</a>")
+						},
+					}
+					egoComponent.Render(ctx, w)
+				}
+//line main.ego:54
+				{
+					egoComponent := bootstrap.BreadcrumbItem{
+						Active: true,
+						Yield: func() {
+//line main.ego:54
+							_, _ = io.WriteString(w, "Data")
+						},
+					}
+					egoComponent.Render(ctx, w)
+				}
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:56
+	_, _ = io.WriteString(w, "\n</nav>\n")
+//line main.ego:57
+}
+
 var _ fmt.Stringer
 var _ io.Reader
 var _ context.Context
