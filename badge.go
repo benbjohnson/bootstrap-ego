@@ -6,6 +6,7 @@ import (
 )
 
 type Badge struct {
+	ID    string
 	Class string
 	Style string
 	Pill  bool
@@ -14,6 +15,7 @@ type Badge struct {
 
 func (c *Badge) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<span role="badge"`)
+	appendAttr(w, "id", c.ID)
 	c.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
@@ -43,10 +45,7 @@ func (c *Badge) renderClass(ctx context.Context, w io.Writer) {
 	}
 
 	// Write user-defined class.
-	if c.Class != "" {
-		io.WriteString(w, ` `)
-		io.WriteString(w, c.Class)
-	}
+	appendHTML(w, c.Class)
 
 	io.WriteString(w, `"`)
 }

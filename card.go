@@ -6,6 +6,7 @@ import (
 )
 
 type Card struct {
+	ID     string
 	Class  string
 	Header func()
 	Body   func()
@@ -15,6 +16,7 @@ type Card struct {
 
 func (c *Card) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
+	appendAttr(w, "id", c.ID)
 	c.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
@@ -45,9 +47,6 @@ func (c *Card) Render(ctx context.Context, w io.Writer) {
 
 func (c *Card) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="card`)
-	if c.Class != "" {
-		io.WriteString(w, ` `)
-		io.WriteString(w, c.Class)
-	}
+	appendHTML(w, c.Class)
 	io.WriteString(w, `"`)
 }

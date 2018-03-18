@@ -7,12 +7,14 @@ import (
 )
 
 type CloseButton struct {
+	ID      string
 	Class   string
 	Dismiss string
 }
 
 func (c *CloseButton) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<button type="button"`)
+	appendAttr(w, "id", c.ID)
 	c.renderClass(ctx, w)
 
 	// Render 'dismiss' data.
@@ -33,9 +35,6 @@ func (c *CloseButton) Render(ctx context.Context, w io.Writer) {
 
 func (c *CloseButton) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="close`)
-	if c.Class != "" {
-		io.WriteString(w, ` `)
-		io.WriteString(w, c.Class)
-	}
+	appendHTML(w, c.Class)
 	io.WriteString(w, `"`)
 }

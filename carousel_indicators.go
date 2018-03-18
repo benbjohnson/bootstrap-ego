@@ -5,13 +5,13 @@ import (
 	"io"
 )
 
-type Breadcrumb struct {
+type CarouselIndicators struct {
 	ID    string
 	Class string
 	Yield func()
 }
 
-func (c *Breadcrumb) Render(ctx context.Context, w io.Writer) {
+func (c *CarouselIndicators) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<ol`)
 	appendAttr(w, "id", c.ID)
 	c.renderClass(ctx, w)
@@ -24,8 +24,8 @@ func (c *Breadcrumb) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `</ol>`)
 }
 
-func (c *Breadcrumb) renderClass(ctx context.Context, w io.Writer) {
-	io.WriteString(w, ` class="breadcrumb`)
+func (c *CarouselIndicators) renderClass(ctx context.Context, w io.Writer) {
+	io.WriteString(w, ` class="carousel-indicators`)
 	appendHTML(w, c.Class)
 	io.WriteString(w, `"`)
 }

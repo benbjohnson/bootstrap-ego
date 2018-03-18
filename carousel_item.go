@@ -5,15 +5,15 @@ import (
 	"io"
 )
 
-type BreadcrumbItem struct {
+type CarouselItem struct {
 	ID     string
 	Class  string
 	Active bool
 	Yield  func()
 }
 
-func (c *BreadcrumbItem) Render(ctx context.Context, w io.Writer) {
-	io.WriteString(w, `<li`)
+func (c *CarouselItem) Render(ctx context.Context, w io.Writer) {
+	io.WriteString(w, `<div`)
 	appendAttr(w, "id", c.ID)
 	c.renderClass(ctx, w)
 	io.WriteString(w, `>`)
@@ -22,11 +22,11 @@ func (c *BreadcrumbItem) Render(ctx context.Context, w io.Writer) {
 		c.Yield()
 	}
 
-	io.WriteString(w, `</li>`)
+	io.WriteString(w, `</div>`)
 }
 
-func (c *BreadcrumbItem) renderClass(ctx context.Context, w io.Writer) {
-	io.WriteString(w, ` class="breadcrumb-item`)
+func (c *CarouselItem) renderClass(ctx context.Context, w io.Writer) {
+	io.WriteString(w, ` class="carousel-item`)
 	if c.Active {
 		io.WriteString(w, ` active`)
 	}

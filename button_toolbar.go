@@ -6,6 +6,7 @@ import (
 )
 
 type ButtonToolbar struct {
+	ID       string
 	Class    string
 	Size     string
 	Vertical bool
@@ -14,6 +15,7 @@ type ButtonToolbar struct {
 
 func (c *ButtonToolbar) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div role="toolbar"`)
+	appendAttr(w, "id", c.ID)
 	c.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
@@ -26,9 +28,6 @@ func (c *ButtonToolbar) Render(ctx context.Context, w io.Writer) {
 
 func (c *ButtonToolbar) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="btn-toolbar`)
-	if c.Class != "" {
-		io.WriteString(w, ` `)
-		io.WriteString(w, c.Class)
-	}
+	appendHTML(w, c.Class)
 	io.WriteString(w, `"`)
 }

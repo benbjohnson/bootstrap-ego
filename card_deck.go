@@ -6,12 +6,14 @@ import (
 )
 
 type CardDeck struct {
+	ID    string
 	Class string
 	Yield func()
 }
 
 func (c *CardDeck) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
+	appendAttr(w, "id", c.ID)
 	c.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
@@ -24,9 +26,6 @@ func (c *CardDeck) Render(ctx context.Context, w io.Writer) {
 
 func (c *CardDeck) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="card-deck`)
-	if c.Class != "" {
-		io.WriteString(w, ` `)
-		io.WriteString(w, c.Class)
-	}
+	appendHTML(w, c.Class)
 	io.WriteString(w, `"`)
 }

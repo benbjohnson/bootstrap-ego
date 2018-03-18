@@ -7,6 +7,7 @@ import (
 )
 
 type Button struct {
+	ID       string
 	Class    string
 	NodeName string
 	Type     string
@@ -36,6 +37,7 @@ func (c *Button) Render(ctx context.Context, w io.Writer) {
 	} else {
 		c.renderType(ctx, w)
 	}
+	appendAttr(w, "id", c.ID)
 	c.renderClass(ctx, w)
 	c.renderHref(ctx, w)
 	c.renderValue(ctx, w)
@@ -108,10 +110,7 @@ func (c *Button) renderClass(ctx context.Context, w io.Writer) {
 	}
 
 	// Write user-defined class.
-	if c.Class != "" {
-		io.WriteString(w, ` `)
-		io.WriteString(w, c.Class)
-	}
+	appendHTML(w, c.Class)
 
 	io.WriteString(w, `"`)
 }

@@ -6,6 +6,7 @@ import (
 )
 
 type ButtonGroup struct {
+	ID       string
 	Class    string
 	Size     string
 	Vertical bool
@@ -14,6 +15,7 @@ type ButtonGroup struct {
 
 func (c *ButtonGroup) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div role="group"`)
+	appendAttr(w, "id", c.ID)
 	c.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
@@ -43,10 +45,7 @@ func (c *ButtonGroup) renderClass(ctx context.Context, w io.Writer) {
 	}
 
 	// Write user-defined class.
-	if c.Class != "" {
-		io.WriteString(w, ` `)
-		io.WriteString(w, c.Class)
-	}
+	appendHTML(w, c.Class)
 
 	io.WriteString(w, `"`)
 }
