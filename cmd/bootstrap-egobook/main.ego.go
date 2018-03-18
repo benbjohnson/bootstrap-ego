@@ -19,23 +19,59 @@ func Head(ctx context.Context, w io.Writer) {
 
 func AlertRenderer(style string) func(ctx context.Context, w io.Writer) {
 	return func(ctx context.Context, w io.Writer) {
-
+//line main.ego:15
+		_, _ = io.WriteString(w, "\n")
 //line main.ego:15
 		{
 			egoComponent := bootstrap.Alert{
 				Style: style,
 				Yield: func() {
-//line main.ego:15
+//line main.ego:16
 					_, _ = io.WriteString(w, "This is a ")
-//line main.ego:15
+//line main.ego:16
 					_, _ = io.WriteString(w, html.EscapeString(fmt.Sprint(style)))
-//line main.ego:15
-					_, _ = io.WriteString(w, " alert.")
+//line main.ego:16
+					_, _ = io.WriteString(w, " alert with <a href=\"#\" class=\"alert-link\">an example link</a>. Give it a click if you like.\n")
 				},
 			}
 			egoComponent.Render(ctx, w)
 		}
-//line main.ego:15
+//line main.ego:18
+		_, _ = io.WriteString(w, "\n\n")
+//line main.ego:19
+		{
+			egoComponent := bootstrap.Alert{
+				Style: style,
+				Yield: func() {
+//line main.ego:20
+					_, _ = io.WriteString(w, "<h4 class=\"alert-heading\">Well done!</h4>\n\t<p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>\n\t<hr/>\n\t<p class=\"mb-0\">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>\n")
+				},
+			}
+			egoComponent.Render(ctx, w)
+		}
+//line main.ego:25
+		_, _ = io.WriteString(w, "\n\n")
+//line main.ego:26
+		{
+			egoComponent := bootstrap.Alert{
+				Style:       "warning",
+				Class:       "fade show",
+				Dismissable: true,
+				Yield: func() {
+//line main.ego:27
+					_, _ = io.WriteString(w, "<strong>Holy guacamole!</strong> You should check in on some of those fields below.\n\t")
+//line main.ego:28
+					{
+						egoComponent := bootstrap.CloseButton{}
+						egoComponent.Render(ctx, w)
+					}
+				},
+			}
+			egoComponent.Render(ctx, w)
+		}
+//line main.ego:30
+		_, _ = io.WriteString(w, "\n")
+//line main.ego:30
 	}
 }
 

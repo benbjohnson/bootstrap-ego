@@ -11,9 +11,23 @@ func Head(ctx context.Context, w io.Writer) { %>
 <% }
 
 func AlertRenderer(style string) func(ctx context.Context, w io.Writer) { 
-	return func(ctx context.Context, w io.Writer) { 
-		%><bootstrap:Alert Style=style>This is a <%= style %> alert.</bootstrap:Alert><%
-	}
+return func(ctx context.Context, w io.Writer) { %>
+<bootstrap:Alert Style=style>
+	This is a <%= style %> alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+</bootstrap:Alert>
+
+<bootstrap:Alert Style=style>
+	<h4 class="alert-heading">Well done!</h4>
+	<p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+	<hr/>
+	<p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+</bootstrap:Alert>
+
+<bootstrap:Alert Style="warning" Class="fade show" Dismissable>
+	<strong>Holy guacamole!</strong> You should check in on some of those fields below.
+	<bootstrap:CloseButton/>
+</bootstrap:Alert>
+<% }
 }
 
 %>

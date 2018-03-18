@@ -6,9 +6,10 @@ import (
 )
 
 type Alert struct {
-	Class string
-	Style string
-	Yield func()
+	Class       string
+	Style       string
+	Dismissable bool
+	Yield       func()
 }
 
 func (c *Alert) Render(ctx context.Context, w io.Writer) {
@@ -34,6 +35,11 @@ func (c *Alert) renderClass(ctx context.Context, w io.Writer) {
 		Logger.Printf("bootstrap.Alert: Style required")
 	default:
 		Logger.Printf("bootstrap.Alert: Invalid style: %q", c.Style)
+	}
+
+	// Write dismissable class.
+	if c.Dismissable {
+		io.WriteString(w, ` alert-dismissable`)
 	}
 
 	// Write user-defined class.
