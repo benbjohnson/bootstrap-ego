@@ -56,4 +56,57 @@ func RenderBreadcrumb(ctx context.Context, w io.Writer) { %>
 </nav>
 <% }
 
+func RenderButtonStyles(ctx context.Context, w io.Writer) { %>
+<bootstrap:Button Style="primary">Primary</bootstrap:Button>
+<bootstrap:Button Style="secondary">Secondary</bootstrap:Button>
+<bootstrap:Button Style="success">Success</bootstrap:Button>
+<bootstrap:Button Style="danger">Danger</bootstrap:Button>
+<bootstrap:Button Style="warning">Warning</bootstrap:Button>
+<bootstrap:Button Style="info">Info</bootstrap:Button>
+<bootstrap:Button Style="light">Light</bootstrap:Button>
+<bootstrap:Button Style="dark">Dark</bootstrap:Button>
+<bootstrap:Button Style="link">Link</bootstrap:Button>
+<% }
+
+func RenderButtonTags(ctx context.Context, w io.Writer) { %>
+<bootstrap:Button Style="primary" Href="#">Link</bootstrap:Button>
+<bootstrap:Button Style="primary" Type="submit">Button</bootstrap:Button>
+<bootstrap:Button NodeName="input" Style="primary" Type="button" Value="Input"/>
+<bootstrap:Button NodeName="input" Style="primary" Type="submit" Value="Submit"/>
+<bootstrap:Button NodeName="input" Style="primary" Type="reset" Value="Reset"/>
+<% }
+
+func RenderButtonOutline(ctx context.Context, w io.Writer) { %>
+<bootstrap:Button Style="primary" Outline>Primary</bootstrap:Button>
+<bootstrap:Button Style="secondary" Outline>Secondary</bootstrap:Button>
+<bootstrap:Button Style="success" Outline>Success</bootstrap:Button>
+<bootstrap:Button Style="danger" Outline>Danger</bootstrap:Button>
+<bootstrap:Button Style="warning" Outline>Warning</bootstrap:Button>
+<bootstrap:Button Style="info" Outline>Info</bootstrap:Button>
+<bootstrap:Button Style="light" Outline>Light</bootstrap:Button>
+<bootstrap:Button Style="dark" Outline>Dark</bootstrap:Button>
+<% }
+
+func RenderButtonSize(ctx context.Context, w io.Writer) { %>
+<bootstrap:Button Style="primary" Size="lg">Large button</bootstrap:Button>
+<bootstrap:Button Style="secondary" Size="lg">Large button</bootstrap:Button>
+<bootstrap:Button Style="primary" Size="sm">Small button</bootstrap:Button>
+<bootstrap:Button Style="secondary" Size="sm">Small button</bootstrap:Button>
+<% }
+
+func RenderButtonBlock(ctx context.Context, w io.Writer) { %>
+<bootstrap:Button Style="primary" Block>Block button</bootstrap:Button>
+<bootstrap:Button Style="secondary" Block>Block button</bootstrap:Button>
+<% }
+
+func RenderButtonActive(ctx context.Context, w io.Writer) { %>
+<bootstrap:Button Href="#" Style="primary" Size="lg" Active>Primary link</bootstrap:Button>
+<bootstrap:Button Href="#" Style="secondary" Size="lg" Active>Link</bootstrap:Button>
+<% }
+
+func RenderButtonDisabled(ctx context.Context, w io.Writer) { %>
+<bootstrap:Button Style="primary" Size="lg" Disabled>Primary button</bootstrap:Button>
+<bootstrap:Button Style="secondary" Size="lg" Disabled>Button</bootstrap:Button>
+<% }
+
 %>

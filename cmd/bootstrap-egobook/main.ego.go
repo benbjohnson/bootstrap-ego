@@ -235,6 +235,487 @@ func RenderBreadcrumb(ctx context.Context, w io.Writer) {
 //line main.ego:57
 }
 
+func RenderButtonStyles(ctx context.Context, w io.Writer) {
+//line main.ego:60
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:60
+	{
+		egoComponent := bootstrap.Button{
+			Style: "primary",
+			Yield: func() {
+//line main.ego:60
+				_, _ = io.WriteString(w, "Primary")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:61
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:61
+	{
+		egoComponent := bootstrap.Button{
+			Style: "secondary",
+			Yield: func() {
+//line main.ego:61
+				_, _ = io.WriteString(w, "Secondary")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:62
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:62
+	{
+		egoComponent := bootstrap.Button{
+			Style: "success",
+			Yield: func() {
+//line main.ego:62
+				_, _ = io.WriteString(w, "Success")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:63
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:63
+	{
+		egoComponent := bootstrap.Button{
+			Style: "danger",
+			Yield: func() {
+//line main.ego:63
+				_, _ = io.WriteString(w, "Danger")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:64
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:64
+	{
+		egoComponent := bootstrap.Button{
+			Style: "warning",
+			Yield: func() {
+//line main.ego:64
+				_, _ = io.WriteString(w, "Warning")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:65
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:65
+	{
+		egoComponent := bootstrap.Button{
+			Style: "info",
+			Yield: func() {
+//line main.ego:65
+				_, _ = io.WriteString(w, "Info")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:66
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:66
+	{
+		egoComponent := bootstrap.Button{
+			Style: "light",
+			Yield: func() {
+//line main.ego:66
+				_, _ = io.WriteString(w, "Light")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:67
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:67
+	{
+		egoComponent := bootstrap.Button{
+			Style: "dark",
+			Yield: func() {
+//line main.ego:67
+				_, _ = io.WriteString(w, "Dark")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:68
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:68
+	{
+		egoComponent := bootstrap.Button{
+			Style: "link",
+			Yield: func() {
+//line main.ego:68
+				_, _ = io.WriteString(w, "Link")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:69
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:69
+}
+
+func RenderButtonTags(ctx context.Context, w io.Writer) {
+//line main.ego:72
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:72
+	{
+		egoComponent := bootstrap.Button{
+			Style: "primary",
+			Href:  "#",
+			Yield: func() {
+//line main.ego:72
+				_, _ = io.WriteString(w, "Link")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:73
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:73
+	{
+		egoComponent := bootstrap.Button{
+			Style: "primary",
+			Type:  "submit",
+			Yield: func() {
+//line main.ego:73
+				_, _ = io.WriteString(w, "Button")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:74
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:74
+	{
+		egoComponent := bootstrap.Button{
+			NodeName: "input",
+			Style:    "primary",
+			Type:     "button",
+			Value:    "Input",
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:75
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:75
+	{
+		egoComponent := bootstrap.Button{
+			NodeName: "input",
+			Style:    "primary",
+			Type:     "submit",
+			Value:    "Submit",
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:76
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:76
+	{
+		egoComponent := bootstrap.Button{
+			NodeName: "input",
+			Style:    "primary",
+			Type:     "reset",
+			Value:    "Reset",
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:77
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:77
+}
+
+func RenderButtonOutline(ctx context.Context, w io.Writer) {
+//line main.ego:80
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:80
+	{
+		egoComponent := bootstrap.Button{
+			Style:   "primary",
+			Outline: true,
+			Yield: func() {
+//line main.ego:80
+				_, _ = io.WriteString(w, "Primary")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:81
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:81
+	{
+		egoComponent := bootstrap.Button{
+			Style:   "secondary",
+			Outline: true,
+			Yield: func() {
+//line main.ego:81
+				_, _ = io.WriteString(w, "Secondary")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:82
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:82
+	{
+		egoComponent := bootstrap.Button{
+			Style:   "success",
+			Outline: true,
+			Yield: func() {
+//line main.ego:82
+				_, _ = io.WriteString(w, "Success")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:83
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:83
+	{
+		egoComponent := bootstrap.Button{
+			Style:   "danger",
+			Outline: true,
+			Yield: func() {
+//line main.ego:83
+				_, _ = io.WriteString(w, "Danger")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:84
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:84
+	{
+		egoComponent := bootstrap.Button{
+			Style:   "warning",
+			Outline: true,
+			Yield: func() {
+//line main.ego:84
+				_, _ = io.WriteString(w, "Warning")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:85
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:85
+	{
+		egoComponent := bootstrap.Button{
+			Style:   "info",
+			Outline: true,
+			Yield: func() {
+//line main.ego:85
+				_, _ = io.WriteString(w, "Info")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:86
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:86
+	{
+		egoComponent := bootstrap.Button{
+			Style:   "light",
+			Outline: true,
+			Yield: func() {
+//line main.ego:86
+				_, _ = io.WriteString(w, "Light")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:87
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:87
+	{
+		egoComponent := bootstrap.Button{
+			Style:   "dark",
+			Outline: true,
+			Yield: func() {
+//line main.ego:87
+				_, _ = io.WriteString(w, "Dark")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:88
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:88
+}
+
+func RenderButtonSize(ctx context.Context, w io.Writer) {
+//line main.ego:91
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:91
+	{
+		egoComponent := bootstrap.Button{
+			Style: "primary",
+			Size:  "lg",
+			Yield: func() {
+//line main.ego:91
+				_, _ = io.WriteString(w, "Large button")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:92
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:92
+	{
+		egoComponent := bootstrap.Button{
+			Style: "secondary",
+			Size:  "lg",
+			Yield: func() {
+//line main.ego:92
+				_, _ = io.WriteString(w, "Large button")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:93
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:93
+	{
+		egoComponent := bootstrap.Button{
+			Style: "primary",
+			Size:  "sm",
+			Yield: func() {
+//line main.ego:93
+				_, _ = io.WriteString(w, "Small button")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:94
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:94
+	{
+		egoComponent := bootstrap.Button{
+			Style: "secondary",
+			Size:  "sm",
+			Yield: func() {
+//line main.ego:94
+				_, _ = io.WriteString(w, "Small button")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:95
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:95
+}
+
+func RenderButtonBlock(ctx context.Context, w io.Writer) {
+//line main.ego:98
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:98
+	{
+		egoComponent := bootstrap.Button{
+			Style: "primary",
+			Block: true,
+			Yield: func() {
+//line main.ego:98
+				_, _ = io.WriteString(w, "Block button")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:99
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:99
+	{
+		egoComponent := bootstrap.Button{
+			Style: "secondary",
+			Block: true,
+			Yield: func() {
+//line main.ego:99
+				_, _ = io.WriteString(w, "Block button")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:100
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:100
+}
+
+func RenderButtonActive(ctx context.Context, w io.Writer) {
+//line main.ego:103
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:103
+	{
+		egoComponent := bootstrap.Button{
+			Href:   "#",
+			Style:  "primary",
+			Size:   "lg",
+			Active: true,
+			Yield: func() {
+//line main.ego:103
+				_, _ = io.WriteString(w, "Primary link")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:104
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:104
+	{
+		egoComponent := bootstrap.Button{
+			Href:   "#",
+			Style:  "secondary",
+			Size:   "lg",
+			Active: true,
+			Yield: func() {
+//line main.ego:104
+				_, _ = io.WriteString(w, "Link")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:105
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:105
+}
+
+func RenderButtonDisabled(ctx context.Context, w io.Writer) {
+//line main.ego:108
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:108
+	{
+		egoComponent := bootstrap.Button{
+			Style:    "primary",
+			Size:     "lg",
+			Disabled: true,
+			Yield: func() {
+//line main.ego:108
+				_, _ = io.WriteString(w, "Primary button")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:109
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:109
+	{
+		egoComponent := bootstrap.Button{
+			Style:    "secondary",
+			Size:     "lg",
+			Disabled: true,
+			Yield: func() {
+//line main.ego:109
+				_, _ = io.WriteString(w, "Button")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:110
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:110
+}
+
 var _ fmt.Stringer
 var _ io.Reader
 var _ context.Context

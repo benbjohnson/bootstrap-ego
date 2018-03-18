@@ -45,6 +45,18 @@ func main() {
 					{Name: "Default", Render: RenderBreadcrumb},
 				},
 			},
+			{
+				Name: "Button",
+				Stories: []*egobook.Story{
+					{Name: "Styles", Render: RenderButtonStyles},
+					{Name: "Tags", Render: RenderButtonTags},
+					{Name: "Outline", Render: RenderButtonOutline},
+					{Name: "Size", Render: RenderButtonSize},
+					{Name: "Block", Render: RenderButtonBlock},
+					{Name: "Active", Render: RenderButtonActive},
+					{Name: "Disabled", Render: RenderButtonDisabled},
+				},
+			},
 		},
 	}
 
