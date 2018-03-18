@@ -69,6 +69,14 @@ func main() {
 					{Name: "Default", Render: RenderButtonToolbarDefault},
 				},
 			},
+			{
+				Name: "Card",
+				Stories: []*egobook.Story{
+					{Name: "Default", Render: RenderButtonCardDefault},
+					{Name: "Header", Render: RenderButtonCardHeader},
+					{Name: "Footer", Render: RenderButtonCardFooter},
+				},
+			},
 		},
 	}
 

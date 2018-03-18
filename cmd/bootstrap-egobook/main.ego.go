@@ -895,6 +895,104 @@ func RenderButtonToolbarDefault(ctx context.Context, w io.Writer) {
 //line main.ego:137
 }
 
+func RenderButtonCardDefault(ctx context.Context, w io.Writer) {
+//line main.ego:140
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:140
+	{
+		egoComponent := bootstrap.Card{
+			Body: func() {
+//line main.ego:142
+				_, _ = io.WriteString(w, "<h5 class=\"card-title\">Special title treatment</h5>\n\t\t<p class=\"card-text\">With supporting text below as a natural lead-in to additional content.</p>\n\t\t")
+//line main.ego:144
+				{
+					egoComponent := bootstrap.Button{
+						Style: "primary",
+						Href:  "#",
+						Yield: func() {
+//line main.ego:144
+							_, _ = io.WriteString(w, "Go somewhere")
+						},
+					}
+					egoComponent.Render(ctx, w)
+				}
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:147
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:147
+}
+
+func RenderButtonCardHeader(ctx context.Context, w io.Writer) {
+//line main.ego:150
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:150
+	{
+		egoComponent := bootstrap.Card{
+			Header: func() {
+//line main.ego:152
+				_, _ = io.WriteString(w, "Featured\n\t")
+			},
+			Body: func() {
+//line main.ego:155
+				_, _ = io.WriteString(w, "<h5 class=\"card-title\">Special title treatment</h5>\n\t\t<p class=\"card-text\">With supporting text below as a natural lead-in to additional content.</p>\n\t\t")
+//line main.ego:157
+				{
+					egoComponent := bootstrap.Button{
+						Style: "primary",
+						Href:  "#",
+						Yield: func() {
+//line main.ego:157
+							_, _ = io.WriteString(w, "Go somewhere")
+						},
+					}
+					egoComponent.Render(ctx, w)
+				}
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:160
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:160
+}
+
+func RenderButtonCardFooter(ctx context.Context, w io.Writer) {
+//line main.ego:163
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:163
+	{
+		egoComponent := bootstrap.Card{
+			Body: func() {
+//line main.ego:165
+				_, _ = io.WriteString(w, "<h5 class=\"card-title\">Special title treatment</h5>\n\t\t<p class=\"card-text\">With supporting text below as a natural lead-in to additional content.</p>\n\t\t")
+//line main.ego:167
+				{
+					egoComponent := bootstrap.Button{
+						Style: "primary",
+						Href:  "#",
+						Yield: func() {
+//line main.ego:167
+							_, _ = io.WriteString(w, "Go somewhere")
+						},
+					}
+					egoComponent.Render(ctx, w)
+				}
+			},
+			Footer: func() {
+//line main.ego:170
+				_, _ = io.WriteString(w, "Featured\n\t")
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:173
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:173
+}
+
 var _ fmt.Stringer
 var _ io.Reader
 var _ context.Context
