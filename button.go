@@ -19,6 +19,7 @@ type Button struct {
 	Block    bool
 	Active   bool
 	Disabled bool
+	Dropdown bool
 	Yield    func()
 }
 
@@ -42,6 +43,10 @@ func (c *Button) Render(ctx context.Context, w io.Writer) {
 	c.renderHref(ctx, w)
 	c.renderValue(ctx, w)
 	c.renderDisabled(ctx, w)
+
+	if c.Dropdown {
+		io.WriteString(w, ` data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"`)
+	}
 
 	// Only allow yield for a/button.
 	if nodeName == "input" {
@@ -107,6 +112,11 @@ func (c *Button) renderClass(ctx context.Context, w io.Writer) {
 	// Enable active look.
 	if c.Active {
 		io.WriteString(w, ` active`)
+	}
+
+	// Enable dropdown.
+	if c.Dropdown {
+		io.WriteString(w, ` dropdown-toggle`)
 	}
 
 	// Write user-defined class.

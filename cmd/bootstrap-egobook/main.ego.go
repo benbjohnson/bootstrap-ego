@@ -895,7 +895,7 @@ func RenderButtonToolbarDefault(ctx context.Context, w io.Writer) {
 //line main.ego:137
 }
 
-func RenderButtonCardDefault(ctx context.Context, w io.Writer) {
+func RenderCardDefault(ctx context.Context, w io.Writer) {
 //line main.ego:140
 	_, _ = io.WriteString(w, "\n")
 //line main.ego:140
@@ -925,7 +925,7 @@ func RenderButtonCardDefault(ctx context.Context, w io.Writer) {
 //line main.ego:147
 }
 
-func RenderButtonCardHeader(ctx context.Context, w io.Writer) {
+func RenderCardHeader(ctx context.Context, w io.Writer) {
 //line main.ego:150
 	_, _ = io.WriteString(w, "\n")
 //line main.ego:150
@@ -959,7 +959,7 @@ func RenderButtonCardHeader(ctx context.Context, w io.Writer) {
 //line main.ego:160
 }
 
-func RenderButtonCardFooter(ctx context.Context, w io.Writer) {
+func RenderCardFooter(ctx context.Context, w io.Writer) {
 //line main.ego:163
 	_, _ = io.WriteString(w, "\n")
 //line main.ego:163
@@ -991,6 +991,51 @@ func RenderButtonCardFooter(ctx context.Context, w io.Writer) {
 //line main.ego:173
 	_, _ = io.WriteString(w, "\n")
 //line main.ego:173
+}
+
+func RenderDropdownDefault(ctx context.Context, w io.Writer) {
+//line main.ego:176
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:176
+	{
+		egoComponent := bootstrap.Dropdown{
+			Yield: func() {
+//line main.ego:177
+				{
+					egoComponent := bootstrap.Button{
+						Style:    "primary",
+						Dropdown: true,
+						Yield: func() {
+//line main.ego:178
+							_, _ = io.WriteString(w, "Action\n\t")
+						},
+					}
+					egoComponent.Render(ctx, w)
+				}
+//line main.ego:180
+				{
+					egoComponent := bootstrap.DropdownMenu{
+						Yield: func() {
+//line main.ego:181
+							_, _ = io.WriteString(w, "<a class=\"dropdown-item\" href=\"#\">Action</a>\n\t\t<a class=\"dropdown-item\" href=\"#\">Another action</a>\n\t\t<a class=\"dropdown-item\" href=\"#\">Something else here</a>\n\t\t")
+//line main.ego:184
+							{
+								egoComponent := bootstrap.DropdownDivider{}
+								egoComponent.Render(ctx, w)
+							}
+//line main.ego:185
+							_, _ = io.WriteString(w, "\n\t\t<a class=\"dropdown-item\" href=\"#\">Separated link</a>\n\t")
+						},
+					}
+					egoComponent.Render(ctx, w)
+				}
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:188
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:188
 }
 
 var _ fmt.Stringer

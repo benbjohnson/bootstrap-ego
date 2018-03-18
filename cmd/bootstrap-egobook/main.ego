@@ -136,7 +136,7 @@ func RenderButtonToolbarDefault(ctx context.Context, w io.Writer) { %>
 </bootstrap:ButtonToolbar>
 <% }
 
-func RenderButtonCardDefault(ctx context.Context, w io.Writer) { %>
+func RenderCardDefault(ctx context.Context, w io.Writer) { %>
 <bootstrap:Card>
 	<bootstrap::Body>
 		<h5 class="card-title">Special title treatment</h5>
@@ -146,7 +146,7 @@ func RenderButtonCardDefault(ctx context.Context, w io.Writer) { %>
 </bootstrap:Card>
 <% }
 
-func RenderButtonCardHeader(ctx context.Context, w io.Writer) { %>
+func RenderCardHeader(ctx context.Context, w io.Writer) { %>
 <bootstrap:Card>
 	<bootstrap::Header>
 		Featured
@@ -159,7 +159,7 @@ func RenderButtonCardHeader(ctx context.Context, w io.Writer) { %>
 </bootstrap:Card>
 <% }
 
-func RenderButtonCardFooter(ctx context.Context, w io.Writer) { %>
+func RenderCardFooter(ctx context.Context, w io.Writer) { %>
 <bootstrap:Card>
 	<bootstrap::Body>
 		<h5 class="card-title">Special title treatment</h5>
@@ -170,6 +170,21 @@ func RenderButtonCardFooter(ctx context.Context, w io.Writer) { %>
 		Featured
 	</bootstrap::Footer>
 </bootstrap:Card>
+<% }
+
+func RenderDropdownDefault(ctx context.Context, w io.Writer) { %>
+<bootstrap:Dropdown>
+	<bootstrap:Button Style="primary" Dropdown>
+		Action
+	</bootstrap:Button>
+	<bootstrap:DropdownMenu>
+		<a class="dropdown-item" href="#">Action</a>
+		<a class="dropdown-item" href="#">Another action</a>
+		<a class="dropdown-item" href="#">Something else here</a>
+		<bootstrap:DropdownDivider/>
+		<a class="dropdown-item" href="#">Separated link</a>
+	</bootstrap:DropdownMenu>
+</bootstrap:Dropdown>
 <% }
 
 %>

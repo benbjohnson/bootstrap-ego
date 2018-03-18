@@ -72,9 +72,15 @@ func main() {
 			{
 				Name: "Card",
 				Stories: []*egobook.Story{
-					{Name: "Default", Render: RenderButtonCardDefault},
-					{Name: "Header", Render: RenderButtonCardHeader},
-					{Name: "Footer", Render: RenderButtonCardFooter},
+					{Name: "Default", Render: RenderCardDefault},
+					{Name: "Header", Render: RenderCardHeader},
+					{Name: "Footer", Render: RenderCardFooter},
+				},
+			},
+			{
+				Name: "Dropdown",
+				Stories: []*egobook.Story{
+					{Name: "Default", Render: RenderDropdownDefault},
 				},
 			},
 		},
