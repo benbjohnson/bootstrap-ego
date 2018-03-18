@@ -109,4 +109,31 @@ func RenderButtonDisabled(ctx context.Context, w io.Writer) { %>
 <bootstrap:Button Style="secondary" Size="lg" Disabled>Button</bootstrap:Button>
 <% }
 
+func RenderButtonGroupDefault(ctx context.Context, w io.Writer) { %>
+<bootstrap:ButtonGroup>
+	<bootstrap:Button Style="secondary">Left</bootstrap:Button>
+	<bootstrap:Button Style="secondary">Middle</bootstrap:Button>
+	<bootstrap:Button Style="secondary">Right</bootstrap:Button>
+</bootstrap:ButtonGroup>
+<% }
+
+func RenderButtonToolbarDefault(ctx context.Context, w io.Writer) { %>
+<bootstrap:ButtonToolbar>
+	<bootstrap:ButtonGroup Class="mr-2">
+		<bootstrap:Button Style="secondary">1</bootstrap:Button>
+		<bootstrap:Button Style="secondary">2</bootstrap:Button>
+		<bootstrap:Button Style="secondary">3</bootstrap:Button>
+		<bootstrap:Button Style="secondary">4</bootstrap:Button>
+	</bootstrap:ButtonGroup>
+	<bootstrap:ButtonGroup Class="mr-2">
+		<bootstrap:Button Style="secondary">5</bootstrap:Button>
+		<bootstrap:Button Style="secondary">6</bootstrap:Button>
+		<bootstrap:Button Style="secondary">7</bootstrap:Button>
+	</bootstrap:ButtonGroup>
+	<bootstrap:ButtonGroup>
+		<bootstrap:Button Style="secondary">8</bootstrap:Button>
+	</bootstrap:ButtonGroup>
+</bootstrap:ButtonToolbar>
+<% }
+
 %>

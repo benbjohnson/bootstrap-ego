@@ -716,6 +716,185 @@ func RenderButtonDisabled(ctx context.Context, w io.Writer) {
 //line main.ego:110
 }
 
+func RenderButtonGroupDefault(ctx context.Context, w io.Writer) {
+//line main.ego:113
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:113
+	{
+		egoComponent := bootstrap.ButtonGroup{
+			Yield: func() {
+//line main.ego:114
+				{
+					egoComponent := bootstrap.Button{
+						Style: "secondary",
+						Yield: func() {
+//line main.ego:114
+							_, _ = io.WriteString(w, "Left")
+						},
+					}
+					egoComponent.Render(ctx, w)
+				}
+//line main.ego:115
+				{
+					egoComponent := bootstrap.Button{
+						Style: "secondary",
+						Yield: func() {
+//line main.ego:115
+							_, _ = io.WriteString(w, "Middle")
+						},
+					}
+					egoComponent.Render(ctx, w)
+				}
+//line main.ego:116
+				{
+					egoComponent := bootstrap.Button{
+						Style: "secondary",
+						Yield: func() {
+//line main.ego:116
+							_, _ = io.WriteString(w, "Right")
+						},
+					}
+					egoComponent.Render(ctx, w)
+				}
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:118
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:118
+}
+
+func RenderButtonToolbarDefault(ctx context.Context, w io.Writer) {
+//line main.ego:121
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:121
+	{
+		egoComponent := bootstrap.ButtonToolbar{
+			Yield: func() {
+//line main.ego:122
+				{
+					egoComponent := bootstrap.ButtonGroup{
+						Class: "mr-2",
+						Yield: func() {
+//line main.ego:123
+							{
+								egoComponent := bootstrap.Button{
+									Style: "secondary",
+									Yield: func() {
+//line main.ego:123
+										_, _ = io.WriteString(w, "1")
+									},
+								}
+								egoComponent.Render(ctx, w)
+							}
+//line main.ego:124
+							{
+								egoComponent := bootstrap.Button{
+									Style: "secondary",
+									Yield: func() {
+//line main.ego:124
+										_, _ = io.WriteString(w, "2")
+									},
+								}
+								egoComponent.Render(ctx, w)
+							}
+//line main.ego:125
+							{
+								egoComponent := bootstrap.Button{
+									Style: "secondary",
+									Yield: func() {
+//line main.ego:125
+										_, _ = io.WriteString(w, "3")
+									},
+								}
+								egoComponent.Render(ctx, w)
+							}
+//line main.ego:126
+							{
+								egoComponent := bootstrap.Button{
+									Style: "secondary",
+									Yield: func() {
+//line main.ego:126
+										_, _ = io.WriteString(w, "4")
+									},
+								}
+								egoComponent.Render(ctx, w)
+							}
+						},
+					}
+					egoComponent.Render(ctx, w)
+				}
+//line main.ego:128
+				{
+					egoComponent := bootstrap.ButtonGroup{
+						Class: "mr-2",
+						Yield: func() {
+//line main.ego:129
+							{
+								egoComponent := bootstrap.Button{
+									Style: "secondary",
+									Yield: func() {
+//line main.ego:129
+										_, _ = io.WriteString(w, "5")
+									},
+								}
+								egoComponent.Render(ctx, w)
+							}
+//line main.ego:130
+							{
+								egoComponent := bootstrap.Button{
+									Style: "secondary",
+									Yield: func() {
+//line main.ego:130
+										_, _ = io.WriteString(w, "6")
+									},
+								}
+								egoComponent.Render(ctx, w)
+							}
+//line main.ego:131
+							{
+								egoComponent := bootstrap.Button{
+									Style: "secondary",
+									Yield: func() {
+//line main.ego:131
+										_, _ = io.WriteString(w, "7")
+									},
+								}
+								egoComponent.Render(ctx, w)
+							}
+						},
+					}
+					egoComponent.Render(ctx, w)
+				}
+//line main.ego:133
+				{
+					egoComponent := bootstrap.ButtonGroup{
+						Yield: func() {
+//line main.ego:134
+							{
+								egoComponent := bootstrap.Button{
+									Style: "secondary",
+									Yield: func() {
+//line main.ego:134
+										_, _ = io.WriteString(w, "8")
+									},
+								}
+								egoComponent.Render(ctx, w)
+							}
+						},
+					}
+					egoComponent.Render(ctx, w)
+				}
+			},
+		}
+		egoComponent.Render(ctx, w)
+	}
+//line main.ego:137
+	_, _ = io.WriteString(w, "\n")
+//line main.ego:137
+}
+
 var _ fmt.Stringer
 var _ io.Reader
 var _ context.Context

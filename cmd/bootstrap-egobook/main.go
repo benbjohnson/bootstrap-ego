@@ -57,6 +57,18 @@ func main() {
 					{Name: "Disabled", Render: RenderButtonDisabled},
 				},
 			},
+			{
+				Name: "Button Group",
+				Stories: []*egobook.Story{
+					{Name: "Default", Render: RenderButtonGroupDefault},
+				},
+			},
+			{
+				Name: "Button Toolbar",
+				Stories: []*egobook.Story{
+					{Name: "Default", Render: RenderButtonToolbarDefault},
+				},
+			},
 		},
 	}
 
