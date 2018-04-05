@@ -10,9 +10,11 @@ type Button struct {
 	ID       string
 	Class    string
 	NodeName string
+	Name     string
 	Type     string
 	Style    string
 	Href     string
+	Form     string
 	Value    string
 	Size     string // "sm","lg"
 	Outline  bool
@@ -39,8 +41,10 @@ func (c *Button) Render(ctx context.Context, w io.Writer) {
 		c.renderType(ctx, w)
 	}
 	appendAttr(w, "id", c.ID)
+	appendAttr(w, "name", c.Name)
 	c.renderClass(ctx, w)
 	c.renderHref(ctx, w)
+	c.renderForm(ctx, w)
 	c.renderValue(ctx, w)
 	c.renderDisabled(ctx, w)
 
@@ -89,7 +93,6 @@ func (c *Button) renderClass(ctx context.Context, w io.Writer) {
 		}
 		io.WriteString(w, c.Style)
 	case "":
-		Logger.Printf("bootstrap.Button: Style required")
 	default:
 		Logger.Printf("bootstrap.Button: Invalid style: %q", c.Style)
 	}
@@ -129,6 +132,14 @@ func (c *Button) renderHref(ctx context.Context, w io.Writer) {
 	if c.Href != "" {
 		io.WriteString(w, ` href="`)
 		io.WriteString(w, html.EscapeString(c.Href))
+		io.WriteString(w, `"`)
+	}
+}
+
+func (c *Button) renderForm(ctx context.Context, w io.Writer) {
+	if c.Form != "" {
+		io.WriteString(w, ` form="`)
+		io.WriteString(w, html.EscapeString(c.Form))
 		io.WriteString(w, `"`)
 	}
 }

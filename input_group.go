@@ -22,7 +22,9 @@ func (c *InputGroup) Render(ctx context.Context, w io.Writer) {
 
 	if c.Prepend != nil {
 		io.WriteString(w, `<div class="input-group-prepend">`)
+		io.WriteString(w, `<span class="input-group-text">`)
 		c.Prepend()
+		io.WriteString(w, `</span>`)
 		io.WriteString(w, `</div>`)
 	}
 
@@ -32,7 +34,9 @@ func (c *InputGroup) Render(ctx context.Context, w io.Writer) {
 
 	if c.Append != nil {
 		io.WriteString(w, `<div class="input-group-append">`)
+		io.WriteString(w, `<span class="input-group-text">`)
 		c.Append()
+		io.WriteString(w, `</span>`)
 		io.WriteString(w, `</div>`)
 	}
 
