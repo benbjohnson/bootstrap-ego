@@ -2,6 +2,7 @@ package bootstrap
 
 import (
 	"context"
+	"html"
 	"io"
 )
 
@@ -13,7 +14,7 @@ type Row struct {
 
 func (c *Row) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
-	appendAttr(w, "id", c.ID)
+	writeAttr(w, "id", c.ID)
 	c.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
@@ -26,6 +27,9 @@ func (c *Row) Render(ctx context.Context, w io.Writer) {
 
 func (c *Row) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="row`)
-	appendHTML(w, c.Class)
+	if s := c.Class; s != "" {
+		io.WriteString(w, " ")
+		io.WriteString(w, html.EscapeString(s))
+	}
 	io.WriteString(w, `"`)
 }

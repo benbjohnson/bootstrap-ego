@@ -2,6 +2,7 @@ package bootstrap
 
 import (
 	"context"
+	"html"
 	"io"
 )
 
@@ -14,7 +15,7 @@ type Container struct {
 
 func (c *Container) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
-	appendAttr(w, "id", c.ID)
+	writeAttr(w, "id", c.ID)
 	c.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
@@ -32,6 +33,10 @@ func (c *Container) renderClass(ctx context.Context, w io.Writer) {
 	} else {
 		io.WriteString(w, "container")
 	}
-	appendHTML(w, c.Class)
+	if s := c.Class; s != "" {
+		io.WriteString(w, " ")
+		io.WriteString(w, html.EscapeString(s))
+	}
+
 	io.WriteString(w, `"`)
 }

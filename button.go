@@ -41,8 +41,8 @@ func (c *Button) Render(ctx context.Context, w io.Writer) {
 	} else {
 		c.renderType(ctx, w)
 	}
-	appendAttr(w, "id", c.ID)
-	appendAttr(w, "name", c.Name)
+	writeAttr(w, "id", c.ID)
+	writeAttr(w, "name", c.Name)
 	c.renderClass(ctx, w)
 	c.renderHref(ctx, w)
 	c.renderForm(ctx, w)
@@ -125,7 +125,10 @@ func (c *Button) renderClass(ctx context.Context, w io.Writer) {
 	}
 
 	// Write user-defined class.
-	appendHTML(w, c.Class)
+	if s := c.Class; s != "" {
+		io.WriteString(w, " ")
+		io.WriteString(w, html.EscapeString(s))
+	}
 
 	io.WriteString(w, `"`)
 }
@@ -166,4 +169,120 @@ func (c *Button) renderDisabled(ctx context.Context, w io.Writer) {
 	if c.Disabled {
 		io.WriteString(w, ` disabled`)
 	}
+}
+
+type ButtonGroup struct {
+	ID       string
+	Class    string
+	Size     string
+	Vertical bool
+	Yield    func()
+}
+
+func (c *ButtonGroup) Render(ctx context.Context, w io.Writer) {
+	io.WriteString(w, `<div role="group"`)
+	writeAttr(w, "id", c.ID)
+	c.renderClass(ctx, w)
+	io.WriteString(w, `>`)
+
+	if c.Yield != nil {
+		c.Yield()
+	}
+
+	io.WriteString(w, `</div>`)
+}
+
+func (c *ButtonGroup) renderClass(ctx context.Context, w io.Writer) {
+	io.WriteString(w, ` class="btn-group`)
+
+	// Write size class.
+	switch c.Size {
+	case "sm", "lg":
+		io.WriteString(w, ` btn-group-`)
+		io.WriteString(w, c.Size)
+	case "":
+	default:
+		Logger.Printf("bootstrap.ButtonGroup: Invalid size: %q", c.Size)
+	}
+
+	// Enable vertical group.
+	if c.Vertical {
+		io.WriteString(w, ` btn-group-vertical`)
+	}
+
+	// Write user-defined class.
+	if s := c.Class; s != "" {
+		io.WriteString(w, " ")
+		io.WriteString(w, html.EscapeString(s))
+	}
+
+	io.WriteString(w, `"`)
+}
+
+type ButtonToolbar struct {
+	ID       string
+	Class    string
+	Size     string
+	Vertical bool
+	Yield    func()
+}
+
+func (c *ButtonToolbar) Render(ctx context.Context, w io.Writer) {
+	io.WriteString(w, `<div role="toolbar"`)
+	writeAttr(w, "id", c.ID)
+	c.renderClass(ctx, w)
+	io.WriteString(w, `>`)
+
+	if c.Yield != nil {
+		c.Yield()
+	}
+
+	io.WriteString(w, `</div>`)
+}
+
+func (c *ButtonToolbar) renderClass(ctx context.Context, w io.Writer) {
+	io.WriteString(w, ` class="btn-toolbar`)
+	if s := c.Class; s != "" {
+		io.WriteString(w, " ")
+		io.WriteString(w, html.EscapeString(s))
+	}
+
+	io.WriteString(w, `"`)
+}
+
+type CloseButton struct {
+	ID      string
+	Class   string
+	Dismiss string
+}
+
+func (c *CloseButton) Render(ctx context.Context, w io.Writer) {
+	io.WriteString(w, `<button type="button"`)
+	writeAttr(w, "id", c.ID)
+	c.renderClass(ctx, w)
+
+	// Render 'dismiss' data.
+	io.WriteString(w, ` data-dismiss="`)
+	if c.Dismiss != "" {
+		io.WriteString(w, html.EscapeString(c.Dismiss))
+	} else {
+		io.WriteString(w, "alert")
+	}
+	io.WriteString(w, `"`)
+
+	// Write accessible label.
+	io.WriteString(w, ` aria-label="Close"`)
+
+	// Close tag.
+	io.WriteString(w, `><span aria-hidden="true">&times;</span></button>`)
+}
+
+func (c *CloseButton) renderClass(ctx context.Context, w io.Writer) {
+	io.WriteString(w, ` class="close`)
+	if s := c.Class; s != "" {
+		io.WriteString(w, " ")
+		io.WriteString(w, html.EscapeString(s))
+	}
+
+	io.WriteString(w, `"`)
 }

@@ -2,6 +2,7 @@ package bootstrap
 
 import (
 	"context"
+	"html"
 	"io"
 )
 
@@ -15,7 +16,7 @@ type Badge struct {
 
 func (c *Badge) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<span role="badge"`)
-	appendAttr(w, "id", c.ID)
+	writeAttr(w, "id", c.ID)
 	c.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
@@ -45,7 +46,10 @@ func (c *Badge) renderClass(ctx context.Context, w io.Writer) {
 	}
 
 	// Write user-defined class.
-	appendHTML(w, c.Class)
+	if s := c.Class; s != "" {
+		io.WriteString(w, " ")
+		io.WriteString(w, html.EscapeString(s))
+	}
 
 	io.WriteString(w, `"`)
 }
