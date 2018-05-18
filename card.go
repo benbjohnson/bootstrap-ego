@@ -15,40 +15,40 @@ type Card struct {
 	Footer func()
 }
 
-func (c *Card) Render(ctx context.Context, w io.Writer) {
+func (r *Card) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
-	if c.Header != nil {
+	if r.Header != nil {
 		io.WriteString(w, `<div class="card-header">`)
-		c.Header()
+		r.Header()
 		io.WriteString(w, `</div>`)
 	}
 
-	if c.Body != nil {
+	if r.Body != nil {
 		io.WriteString(w, `<div class="card-body">`)
-		c.Body()
+		r.Body()
 		io.WriteString(w, `</div>`)
 	}
 
-	if c.Yield != nil {
-		c.Yield()
+	if r.Yield != nil {
+		r.Yield()
 	}
 
-	if c.Footer != nil {
+	if r.Footer != nil {
 		io.WriteString(w, `<div class="card-footer">`)
-		c.Footer()
+		r.Footer()
 		io.WriteString(w, `</div>`)
 	}
 
 	io.WriteString(w, `</div>`)
 }
 
-func (c *Card) renderClass(ctx context.Context, w io.Writer) {
+func (r *Card) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="card`)
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}
@@ -62,22 +62,22 @@ type CardGroup struct {
 	Yield func()
 }
 
-func (c *CardGroup) Render(ctx context.Context, w io.Writer) {
+func (r *CardGroup) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
-	if c.Yield != nil {
-		c.Yield()
+	if r.Yield != nil {
+		r.Yield()
 	}
 
 	io.WriteString(w, `</div>`)
 }
 
-func (c *CardGroup) renderClass(ctx context.Context, w io.Writer) {
+func (r *CardGroup) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="card-group`)
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}
@@ -91,22 +91,22 @@ type CardDeck struct {
 	Yield func()
 }
 
-func (c *CardDeck) Render(ctx context.Context, w io.Writer) {
+func (r *CardDeck) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
-	if c.Yield != nil {
-		c.Yield()
+	if r.Yield != nil {
+		r.Yield()
 	}
 
 	io.WriteString(w, `</div>`)
 }
 
-func (c *CardDeck) renderClass(ctx context.Context, w io.Writer) {
+func (r *CardDeck) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="card-deck`)
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}
@@ -120,22 +120,22 @@ type CardColumns struct {
 	Yield func()
 }
 
-func (c *CardColumns) Render(ctx context.Context, w io.Writer) {
+func (r *CardColumns) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
-	if c.Yield != nil {
-		c.Yield()
+	if r.Yield != nil {
+		r.Yield()
 	}
 
 	io.WriteString(w, `</div>`)
 }
 
-func (c *CardColumns) renderClass(ctx context.Context, w io.Writer) {
+func (r *CardColumns) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="card-columns`)
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}

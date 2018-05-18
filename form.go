@@ -12,22 +12,22 @@ type FormGroup struct {
 	Yield func()
 }
 
-func (c *FormGroup) Render(ctx context.Context, w io.Writer) {
+func (r *FormGroup) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
-	if c.Yield != nil {
-		c.Yield()
+	if r.Yield != nil {
+		r.Yield()
 	}
 
 	io.WriteString(w, `</div>`)
 }
 
-func (c *FormGroup) renderClass(ctx context.Context, w io.Writer) {
+func (r *FormGroup) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="form-group`)
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}
@@ -41,22 +41,22 @@ type FormRow struct {
 	Yield func()
 }
 
-func (c *FormRow) Render(ctx context.Context, w io.Writer) {
+func (r *FormRow) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
-	if c.Yield != nil {
-		c.Yield()
+	if r.Yield != nil {
+		r.Yield()
 	}
 
 	io.WriteString(w, `</div>`)
 }
 
-func (c *FormRow) renderClass(ctx context.Context, w io.Writer) {
+func (r *FormRow) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="form-row`)
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}
@@ -69,22 +69,22 @@ type FormText struct {
 	Yield func()
 }
 
-func (c *FormText) Render(ctx context.Context, w io.Writer) {
+func (r *FormText) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
-	if c.Yield != nil {
-		c.Yield()
+	if r.Yield != nil {
+		r.Yield()
 	}
 
 	io.WriteString(w, `</div>`)
 }
 
-func (c *FormText) renderClass(ctx context.Context, w io.Writer) {
+func (r *FormText) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="form-text`)
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}
@@ -98,25 +98,25 @@ type FormCheck struct {
 	Yield  func()
 }
 
-func (c *FormCheck) Render(ctx context.Context, w io.Writer) {
+func (r *FormCheck) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
-	if c.Yield != nil {
-		c.Yield()
+	if r.Yield != nil {
+		r.Yield()
 	}
 
 	io.WriteString(w, `</div>`)
 }
 
-func (c *FormCheck) renderClass(ctx context.Context, w io.Writer) {
+func (r *FormCheck) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="form-check`)
-	if c.Inline {
+	if r.Inline {
 		io.WriteString(w, ` form-check-inline`)
 	}
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}
@@ -133,28 +133,28 @@ type InputGroup struct {
 	Yield   func()
 }
 
-func (c *InputGroup) Render(ctx context.Context, w io.Writer) {
+func (r *InputGroup) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
-	if c.Prepend != nil {
+	if r.Prepend != nil {
 		io.WriteString(w, `<div class="input-group-prepend">`)
 		io.WriteString(w, `<span class="input-group-text">`)
-		c.Prepend()
+		r.Prepend()
 		io.WriteString(w, `</span>`)
 		io.WriteString(w, `</div>`)
 	}
 
-	if c.Yield != nil {
-		c.Yield()
+	if r.Yield != nil {
+		r.Yield()
 	}
 
-	if c.Append != nil {
+	if r.Append != nil {
 		io.WriteString(w, `<div class="input-group-append">`)
 		io.WriteString(w, `<span class="input-group-text">`)
-		c.Append()
+		r.Append()
 		io.WriteString(w, `</span>`)
 		io.WriteString(w, `</div>`)
 	}
@@ -162,19 +162,19 @@ func (c *InputGroup) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `</div>`)
 }
 
-func (c *InputGroup) renderClass(ctx context.Context, w io.Writer) {
+func (r *InputGroup) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="input-group`)
 
-	switch c.Size {
+	switch r.Size {
 	case "sm", "lg":
 		io.WriteString(w, ` input-group-`)
-		io.WriteString(w, c.Size)
+		io.WriteString(w, r.Size)
 	case "":
 	default:
-		Logger.Printf("bootstrap.InputGroup: Invalid size: %q", c.Size)
+		Logger.Printf("bootstrap.InputGroup: Invalid size: %q", r.Size)
 	}
 
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}
@@ -188,21 +188,21 @@ type InputGroupText struct {
 	Yield func()
 }
 
-func (c *InputGroupText) Render(ctx context.Context, w io.Writer) {
+func (r *InputGroupText) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
-	if c.Yield != nil {
-		c.Yield()
+	if r.Yield != nil {
+		r.Yield()
 	}
 	io.WriteString(w, `</div>`)
 }
 
-func (c *InputGroupText) renderClass(ctx context.Context, w io.Writer) {
+func (r *InputGroupText) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="input-group-text`)
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}
@@ -215,22 +215,22 @@ type InvalidFeedback struct {
 	Yield func()
 }
 
-func (c *InvalidFeedback) Render(ctx context.Context, w io.Writer) {
+func (r *InvalidFeedback) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
-	if c.Yield != nil {
-		c.Yield()
+	if r.Yield != nil {
+		r.Yield()
 	}
 
 	io.WriteString(w, `</div>`)
 }
 
-func (c *InvalidFeedback) renderClass(ctx context.Context, w io.Writer) {
+func (r *InvalidFeedback) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="invalid-feedback`)
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}
@@ -243,22 +243,22 @@ type ValidFeedback struct {
 	Yield func()
 }
 
-func (c *ValidFeedback) Render(ctx context.Context, w io.Writer) {
+func (r *ValidFeedback) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
-	if c.Yield != nil {
-		c.Yield()
+	if r.Yield != nil {
+		r.Yield()
 	}
 
 	io.WriteString(w, `</div>`)
 }
 
-func (c *ValidFeedback) renderClass(ctx context.Context, w io.Writer) {
+func (r *ValidFeedback) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="valid-feedback`)
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}

@@ -14,39 +14,39 @@ type Alert struct {
 	Yield       func()
 }
 
-func (c *Alert) Render(ctx context.Context, w io.Writer) {
+func (r *Alert) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div role="alert"`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
-	if c.Yield != nil {
-		c.Yield()
+	if r.Yield != nil {
+		r.Yield()
 	}
 
 	io.WriteString(w, `</div>`)
 }
 
-func (c *Alert) renderClass(ctx context.Context, w io.Writer) {
+func (r *Alert) renderClass(ctx context.Context, w io.Writer) {
 	// Write style class.
 	io.WriteString(w, ` class="alert`)
-	switch c.Style {
+	switch r.Style {
 	case "primary", "secondary", "success", "danger", "warning", "info", "light", "dark":
 		io.WriteString(w, ` alert-`)
-		io.WriteString(w, c.Style)
+		io.WriteString(w, r.Style)
 	case "":
 		Logger.Printf("bootstrap.Alert: Style required")
 	default:
-		Logger.Printf("bootstrap.Alert: Invalid style: %q", c.Style)
+		Logger.Printf("bootstrap.Alert: Invalid style: %q", r.Style)
 	}
 
 	// Write dismissable class.
-	if c.Dismissable {
+	if r.Dismissable {
 		io.WriteString(w, ` alert-dismissable`)
 	}
 
 	// Write user-defined class.
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}

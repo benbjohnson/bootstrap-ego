@@ -12,21 +12,21 @@ type Jumbotron struct {
 	Yield func()
 }
 
-func (c *Jumbotron) Render(ctx context.Context, w io.Writer) {
+func (r *Jumbotron) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
-	if c.Yield != nil {
-		c.Yield()
+	if r.Yield != nil {
+		r.Yield()
 	}
 	io.WriteString(w, `</div>`)
 }
 
-func (c *Jumbotron) renderClass(ctx context.Context, w io.Writer) {
+func (r *Jumbotron) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="jumbotron`)
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}

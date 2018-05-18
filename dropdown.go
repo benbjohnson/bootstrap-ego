@@ -12,22 +12,22 @@ type Dropdown struct {
 	Yield func()
 }
 
-func (c *Dropdown) Render(ctx context.Context, w io.Writer) {
+func (r *Dropdown) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
-	if c.Yield != nil {
-		c.Yield()
+	if r.Yield != nil {
+		r.Yield()
 	}
 
 	io.WriteString(w, `</div>`)
 }
 
-func (c *Dropdown) renderClass(ctx context.Context, w io.Writer) {
+func (r *Dropdown) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="dropdown`)
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}
@@ -41,22 +41,22 @@ type DropdownMenu struct {
 	Yield func()
 }
 
-func (c *DropdownMenu) Render(ctx context.Context, w io.Writer) {
+func (r *DropdownMenu) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
-	if c.Yield != nil {
-		c.Yield()
+	if r.Yield != nil {
+		r.Yield()
 	}
 
 	io.WriteString(w, `</div>`)
 }
 
-func (c *DropdownMenu) renderClass(ctx context.Context, w io.Writer) {
+func (r *DropdownMenu) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="dropdown-menu`)
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}
@@ -69,17 +69,17 @@ type DropdownDivider struct {
 	Class string
 }
 
-func (c *DropdownDivider) Render(ctx context.Context, w io.Writer) {
+func (r *DropdownDivider) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 	io.WriteString(w, `</div>`)
 }
 
-func (c *DropdownDivider) renderClass(ctx context.Context, w io.Writer) {
+func (r *DropdownDivider) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="dropdown-divider`)
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}

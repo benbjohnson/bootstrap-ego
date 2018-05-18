@@ -15,33 +15,33 @@ type Carousel struct {
 	Controls   func()
 }
 
-func (c *Carousel) Render(ctx context.Context, w io.Writer) {
+func (r *Carousel) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, ` data-ride="carousel"`)
 	io.WriteString(w, `>`)
 
-	if c.Indicators != nil {
-		c.Indicators()
+	if r.Indicators != nil {
+		r.Indicators()
 	}
 
-	if c.Inner != nil {
+	if r.Inner != nil {
 		io.WriteString(w, `<div class="carousel-inner">`)
-		c.Inner()
+		r.Inner()
 		io.WriteString(w, `</div>`)
 	}
 
-	if c.Controls != nil {
-		c.Controls()
+	if r.Controls != nil {
+		r.Controls()
 	}
 
 	io.WriteString(w, `</div>`)
 }
 
-func (c *Carousel) renderClass(ctx context.Context, w io.Writer) {
+func (r *Carousel) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="carousel slide`)
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}
@@ -56,25 +56,25 @@ type CarouselItem struct {
 	Yield  func()
 }
 
-func (c *CarouselItem) Render(ctx context.Context, w io.Writer) {
+func (r *CarouselItem) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<div`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
-	if c.Yield != nil {
-		c.Yield()
+	if r.Yield != nil {
+		r.Yield()
 	}
 
 	io.WriteString(w, `</div>`)
 }
 
-func (c *CarouselItem) renderClass(ctx context.Context, w io.Writer) {
+func (r *CarouselItem) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="carousel-item`)
-	if c.Active {
+	if r.Active {
 		io.WriteString(w, ` active`)
 	}
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}
@@ -88,22 +88,22 @@ type CarouselIndicators struct {
 	Yield func()
 }
 
-func (c *CarouselIndicators) Render(ctx context.Context, w io.Writer) {
+func (r *CarouselIndicators) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<ol`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
-	if c.Yield != nil {
-		c.Yield()
+	if r.Yield != nil {
+		r.Yield()
 	}
 
 	io.WriteString(w, `</ol>`)
 }
 
-func (c *CarouselIndicators) renderClass(ctx context.Context, w io.Writer) {
+func (r *CarouselIndicators) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="carousel-indicators`)
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}
@@ -119,45 +119,45 @@ type CarouselIndicator struct {
 	Active  bool
 }
 
-func (c *CarouselIndicator) Render(ctx context.Context, w io.Writer) {
+func (r *CarouselIndicator) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<li`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
-	c.renderDataTarget(ctx, w)
-	c.renderDataSlideTo(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
+	r.renderDataTarget(ctx, w)
+	r.renderDataSlideTo(ctx, w)
 	io.WriteString(w, `>`)
 	io.WriteString(w, `</li>`)
 }
 
-func (c *CarouselIndicator) renderClass(ctx context.Context, w io.Writer) {
-	if !c.Active && c.Class == "" {
+func (r *CarouselIndicator) renderClass(ctx context.Context, w io.Writer) {
+	if !r.Active && r.Class == "" {
 		return
 	}
 	io.WriteString(w, ` class="`)
-	if c.Active {
+	if r.Active {
 		io.WriteString(w, `active`)
 	}
-	if c.Active && c.Class != "" {
+	if r.Active && r.Class != "" {
 		io.WriteString(w, ` `)
 	}
-	if c.Class != "" {
-		io.WriteString(w, html.EscapeString(c.Class))
+	if r.Class != "" {
+		io.WriteString(w, html.EscapeString(r.Class))
 	}
 	io.WriteString(w, `"`)
 }
 
-func (c *CarouselIndicator) renderDataTarget(ctx context.Context, w io.Writer) {
-	if c.Target == "" {
+func (r *CarouselIndicator) renderDataTarget(ctx context.Context, w io.Writer) {
+	if r.Target == "" {
 		return
 	}
 	io.WriteString(w, ` data-target="#`)
-	io.WriteString(w, html.EscapeString(c.Target))
+	io.WriteString(w, html.EscapeString(r.Target))
 	io.WriteString(w, `"`)
 }
 
-func (c *CarouselIndicator) renderDataSlideTo(ctx context.Context, w io.Writer) {
+func (r *CarouselIndicator) renderDataSlideTo(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` data-slide-to="`)
-	io.WriteString(w, strconv.Itoa(c.SlideTo))
+	io.WriteString(w, strconv.Itoa(r.SlideTo))
 	io.WriteString(w, `"`)
 }
 
@@ -167,11 +167,11 @@ type CarouselControlPrev struct {
 	Target string
 }
 
-func (c *CarouselControlPrev) Render(ctx context.Context, w io.Writer) {
+func (r *CarouselControlPrev) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<a`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
-	c.renderHref(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
+	r.renderHref(ctx, w)
 	io.WriteString(w, ` role="button" data-slide="prev"`)
 	io.WriteString(w, `>`)
 	io.WriteString(w, `<span class="carousel-control-prev-icon" aria-hidden="true"></span>`)
@@ -179,18 +179,18 @@ func (c *CarouselControlPrev) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `</a>`)
 }
 
-func (c *CarouselControlPrev) renderClass(ctx context.Context, w io.Writer) {
+func (r *CarouselControlPrev) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="carousel-control-prev`)
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}
 	io.WriteString(w, `"`)
 }
 
-func (c *CarouselControlPrev) renderHref(ctx context.Context, w io.Writer) {
+func (r *CarouselControlPrev) renderHref(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` href="#`)
-	if s := c.Target; s != "" {
+	if s := r.Target; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}
@@ -203,11 +203,11 @@ type CarouselControlNext struct {
 	Target string
 }
 
-func (c *CarouselControlNext) Render(ctx context.Context, w io.Writer) {
+func (r *CarouselControlNext) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<a`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
-	c.renderHref(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
+	r.renderHref(ctx, w)
 	io.WriteString(w, ` role="button" data-slide="next"`)
 	io.WriteString(w, `>`)
 	io.WriteString(w, `<span class="carousel-control-next-icon" aria-hidden="true"></span>`)
@@ -215,9 +215,9 @@ func (c *CarouselControlNext) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `</a>`)
 }
 
-func (c *CarouselControlNext) renderClass(ctx context.Context, w io.Writer) {
+func (r *CarouselControlNext) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="carousel-control-next`)
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}
@@ -225,9 +225,9 @@ func (c *CarouselControlNext) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `"`)
 }
 
-func (c *CarouselControlNext) renderHref(ctx context.Context, w io.Writer) {
+func (r *CarouselControlNext) renderHref(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` href="#`)
-	if s := c.Target; s != "" {
+	if s := r.Target; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}

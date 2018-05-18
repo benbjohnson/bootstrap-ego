@@ -14,39 +14,39 @@ type Badge struct {
 	Yield func()
 }
 
-func (c *Badge) Render(ctx context.Context, w io.Writer) {
+func (r *Badge) Render(ctx context.Context, w io.Writer) {
 	io.WriteString(w, `<span role="badge"`)
-	writeAttr(w, "id", c.ID)
-	c.renderClass(ctx, w)
+	writeAttr(w, "id", r.ID)
+	r.renderClass(ctx, w)
 	io.WriteString(w, `>`)
 
-	if c.Yield != nil {
-		c.Yield()
+	if r.Yield != nil {
+		r.Yield()
 	}
 
 	io.WriteString(w, `</span>`)
 }
 
-func (c *Badge) renderClass(ctx context.Context, w io.Writer) {
+func (r *Badge) renderClass(ctx context.Context, w io.Writer) {
 	// Write style class.
 	io.WriteString(w, ` class="badge`)
-	switch c.Style {
+	switch r.Style {
 	case "primary", "secondary", "success", "danger", "warning", "info", "light", "dark":
 		io.WriteString(w, ` badge-`)
-		io.WriteString(w, c.Style)
+		io.WriteString(w, r.Style)
 	case "":
 		Logger.Printf("bootstrap.Badge: Style required")
 	default:
-		Logger.Printf("bootstrap.Badge: Invalid style: %q", c.Style)
+		Logger.Printf("bootstrap.Badge: Invalid style: %q", r.Style)
 	}
 
 	// Pill style
-	if c.Pill {
+	if r.Pill {
 		io.WriteString(w, ` badge-pill`)
 	}
 
 	// Write user-defined class.
-	if s := c.Class; s != "" {
+	if s := r.Class; s != "" {
 		io.WriteString(w, " ")
 		io.WriteString(w, html.EscapeString(s))
 	}
