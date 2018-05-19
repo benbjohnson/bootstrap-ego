@@ -59,6 +59,7 @@ func (r *Nav) renderClass(ctx context.Context, w io.Writer) {
 type NavItem struct {
 	ID       string
 	Class    string
+	Active   bool
 	Dropdown bool
 	Yield    func()
 }
@@ -78,6 +79,9 @@ func (r *NavItem) Render(ctx context.Context, w io.Writer) {
 
 func (r *NavItem) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="nav-item`)
+	if r.Active {
+		io.WriteString(w, ` active`)
+	}
 	if r.Dropdown {
 		io.WriteString(w, ` dropdown`)
 	}
