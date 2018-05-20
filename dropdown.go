@@ -2,6 +2,7 @@ package bootstrap
 
 import (
 	"context"
+	"fmt"
 	"html"
 	"io"
 )
@@ -28,8 +29,7 @@ func (r *Dropdown) Render(ctx context.Context, w io.Writer) {
 func (r *Dropdown) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="dropdown`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 
 	io.WriteString(w, `"`)
@@ -57,8 +57,7 @@ func (r *DropdownMenu) Render(ctx context.Context, w io.Writer) {
 func (r *DropdownMenu) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="dropdown-menu`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 
 	io.WriteString(w, `"`)
@@ -80,8 +79,7 @@ func (r *DropdownDivider) Render(ctx context.Context, w io.Writer) {
 func (r *DropdownDivider) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="dropdown-divider`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 
 	io.WriteString(w, `"`)

@@ -2,6 +2,7 @@ package bootstrap
 
 import (
 	"context"
+	"fmt"
 	"html"
 	"io"
 )
@@ -28,8 +29,7 @@ func (r *Breadcrumb) Render(ctx context.Context, w io.Writer) {
 func (r *Breadcrumb) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="breadcrumb`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 	io.WriteString(w, `"`)
 }
@@ -60,8 +60,7 @@ func (r *BreadcrumbItem) renderClass(ctx context.Context, w io.Writer) {
 		io.WriteString(w, ` active`)
 	}
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 
 	io.WriteString(w, `"`)

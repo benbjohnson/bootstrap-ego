@@ -2,6 +2,7 @@ package bootstrap
 
 import (
 	"context"
+	"fmt"
 	"html"
 	"io"
 )
@@ -49,8 +50,7 @@ func (r *Card) Render(ctx context.Context, w io.Writer) {
 func (r *Card) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="card`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 
 	io.WriteString(w, `"`)
@@ -78,8 +78,7 @@ func (r *CardGroup) Render(ctx context.Context, w io.Writer) {
 func (r *CardGroup) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="card-group`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 
 	io.WriteString(w, `"`)
@@ -107,8 +106,7 @@ func (r *CardDeck) Render(ctx context.Context, w io.Writer) {
 func (r *CardDeck) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="card-deck`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 
 	io.WriteString(w, `"`)
@@ -136,8 +134,7 @@ func (r *CardColumns) Render(ctx context.Context, w io.Writer) {
 func (r *CardColumns) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="card-columns`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 
 	io.WriteString(w, `"`)

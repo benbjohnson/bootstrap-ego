@@ -2,9 +2,9 @@ package bootstrap
 
 import (
 	"context"
+	"fmt"
 	"html"
 	"io"
-	"strconv"
 )
 
 type Carousel struct {
@@ -42,8 +42,7 @@ func (r *Carousel) Render(ctx context.Context, w io.Writer) {
 func (r *Carousel) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="carousel slide`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 
 	io.WriteString(w, `"`)
@@ -75,8 +74,7 @@ func (r *CarouselItem) renderClass(ctx context.Context, w io.Writer) {
 		io.WriteString(w, ` active`)
 	}
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 
 	io.WriteString(w, `"`)
@@ -104,8 +102,7 @@ func (r *CarouselIndicators) Render(ctx context.Context, w io.Writer) {
 func (r *CarouselIndicators) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="carousel-indicators`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 
 	io.WriteString(w, `"`)
@@ -150,15 +147,11 @@ func (r *CarouselIndicator) renderDataTarget(ctx context.Context, w io.Writer) {
 	if r.Target == "" {
 		return
 	}
-	io.WriteString(w, ` data-target="#`)
-	io.WriteString(w, html.EscapeString(r.Target))
-	io.WriteString(w, `"`)
+	fmt.Fprintf(w, ` data-target="#%s"`, html.EscapeString(r.Target))
 }
 
 func (r *CarouselIndicator) renderDataSlideTo(ctx context.Context, w io.Writer) {
-	io.WriteString(w, ` data-slide-to="`)
-	io.WriteString(w, strconv.Itoa(r.SlideTo))
-	io.WriteString(w, `"`)
+	fmt.Fprintf(w, ` data-slide-to="%d"`, r.SlideTo)
 }
 
 type CarouselControlPrev struct {
@@ -182,8 +175,7 @@ func (r *CarouselControlPrev) Render(ctx context.Context, w io.Writer) {
 func (r *CarouselControlPrev) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="carousel-control-prev`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 	io.WriteString(w, `"`)
 }
@@ -191,8 +183,7 @@ func (r *CarouselControlPrev) renderClass(ctx context.Context, w io.Writer) {
 func (r *CarouselControlPrev) renderHref(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` href="#`)
 	if s := r.Target; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 	io.WriteString(w, `"`)
 }
@@ -218,8 +209,7 @@ func (r *CarouselControlNext) Render(ctx context.Context, w io.Writer) {
 func (r *CarouselControlNext) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="carousel-control-next`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 
 	io.WriteString(w, `"`)
@@ -228,8 +218,7 @@ func (r *CarouselControlNext) renderClass(ctx context.Context, w io.Writer) {
 func (r *CarouselControlNext) renderHref(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` href="#`)
 	if s := r.Target; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 	io.WriteString(w, `"`)
 }

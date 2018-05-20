@@ -2,6 +2,7 @@ package bootstrap
 
 import (
 	"context"
+	"fmt"
 	"html"
 	"io"
 )
@@ -28,12 +29,12 @@ func (r *Badge) Render(ctx context.Context, w io.Writer) {
 }
 
 func (r *Badge) renderClass(ctx context.Context, w io.Writer) {
-	// Write style class.
 	io.WriteString(w, ` class="badge`)
+
+	// Write style class.
 	switch r.Style {
 	case "primary", "secondary", "success", "danger", "warning", "info", "light", "dark":
-		io.WriteString(w, ` badge-`)
-		io.WriteString(w, r.Style)
+		fmt.Fprintf(w, ` badge-%s`, r.Style)
 	case "":
 		Logger.Printf("bootstrap.Badge: Style required")
 	default:
@@ -47,8 +48,7 @@ func (r *Badge) renderClass(ctx context.Context, w io.Writer) {
 
 	// Write user-defined class.
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 
 	io.WriteString(w, `"`)

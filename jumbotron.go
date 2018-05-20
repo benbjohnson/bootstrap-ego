@@ -2,6 +2,7 @@ package bootstrap
 
 import (
 	"context"
+	"fmt"
 	"html"
 	"io"
 )
@@ -27,8 +28,7 @@ func (r *Jumbotron) Render(ctx context.Context, w io.Writer) {
 func (r *Jumbotron) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="jumbotron`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 	io.WriteString(w, `"`)
 }

@@ -2,6 +2,7 @@ package bootstrap
 
 import (
 	"context"
+	"fmt"
 	"html"
 	"io"
 )
@@ -28,8 +29,7 @@ func (r *FormGroup) Render(ctx context.Context, w io.Writer) {
 func (r *FormGroup) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="form-group`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 
 	io.WriteString(w, `"`)
@@ -57,8 +57,7 @@ func (r *FormRow) Render(ctx context.Context, w io.Writer) {
 func (r *FormRow) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="form-row`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 	io.WriteString(w, `"`)
 }
@@ -85,8 +84,7 @@ func (r *FormText) Render(ctx context.Context, w io.Writer) {
 func (r *FormText) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="form-text`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 	io.WriteString(w, `"`)
 }
@@ -117,8 +115,7 @@ func (r *FormCheck) renderClass(ctx context.Context, w io.Writer) {
 		io.WriteString(w, ` form-check-inline`)
 	}
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 
 	io.WriteString(w, `"`)
@@ -167,16 +164,14 @@ func (r *InputGroup) renderClass(ctx context.Context, w io.Writer) {
 
 	switch r.Size {
 	case "sm", "lg":
-		io.WriteString(w, ` input-group-`)
-		io.WriteString(w, r.Size)
+		fmt.Fprintf(w, ` input-group-%s`, r.Size)
 	case "":
 	default:
 		Logger.Printf("bootstrap.InputGroup: Invalid size: %q", r.Size)
 	}
 
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 
 	io.WriteString(w, `"`)
@@ -203,8 +198,7 @@ func (r *InputGroupText) Render(ctx context.Context, w io.Writer) {
 func (r *InputGroupText) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="input-group-text`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 	io.WriteString(w, `"`)
 }
@@ -231,8 +225,7 @@ func (r *InvalidFeedback) Render(ctx context.Context, w io.Writer) {
 func (r *InvalidFeedback) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="invalid-feedback`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 	io.WriteString(w, `"`)
 }
@@ -259,8 +252,7 @@ func (r *ValidFeedback) Render(ctx context.Context, w io.Writer) {
 func (r *ValidFeedback) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="valid-feedback`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 	io.WriteString(w, `"`)
 }

@@ -1,6 +1,7 @@
 package bootstrap
 
 import (
+	"fmt"
 	"html"
 	"io"
 	"log"
@@ -15,9 +16,5 @@ func writeAttr(w io.Writer, key, value string) {
 	if value == "" {
 		return
 	}
-	io.WriteString(w, ` `)
-	io.WriteString(w, key)
-	io.WriteString(w, `="`)
-	io.WriteString(w, html.EscapeString(value))
-	io.WriteString(w, `"`)
+	fmt.Fprintf(w, ` %s="%s"`, key, html.EscapeString(value))
 }

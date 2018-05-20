@@ -127,9 +127,7 @@ func (r *ListGroupItem) renderType(ctx context.Context, w io.Writer) {
 
 	switch r.Type {
 	case "submit", "reset", "button":
-		io.WriteString(w, ` type="`)
-		io.WriteString(w, r.Type)
-		io.WriteString(w, `"`)
+		fmt.Fprintf(w, ` type="%s"`, r.Type)
 	case "":
 	default:
 		Logger.Printf("bootstrap.ListGroupItem: Invalid type: %q", r.Type)

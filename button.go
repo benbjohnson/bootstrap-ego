@@ -2,6 +2,7 @@ package bootstrap
 
 import (
 	"context"
+	"fmt"
 	"html"
 	"io"
 )
@@ -34,8 +35,7 @@ func (r *Button) Render(ctx context.Context, w io.Writer) {
 		nodeName = "button"
 	}
 
-	io.WriteString(w, `<`)
-	io.WriteString(w, nodeName)
+	fmt.Fprintf(w, `<%s`, nodeName)
 	if nodeName == "a" {
 		io.WriteString(w, ` role="button"`)
 	} else {
@@ -44,12 +44,13 @@ func (r *Button) Render(ctx context.Context, w io.Writer) {
 	writeAttr(w, "id", r.ID)
 	writeAttr(w, "name", r.Name)
 	r.renderClass(ctx, w)
-	r.renderHref(ctx, w)
-	r.renderForm(ctx, w)
-	r.renderTarget(ctx, w)
-	r.renderValue(ctx, w)
-	r.renderDisabled(ctx, w)
-
+	writeAttr(w, "href", r.Href)
+	writeAttr(w, "form", r.Form)
+	writeAttr(w, "target", r.Target)
+	writeAttr(w, "value", r.Value)
+	if r.Disabled {
+		io.WriteString(w, ` disabled`)
+	}
 	if r.Dropdown {
 		io.WriteString(w, ` data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"`)
 	}
@@ -64,18 +65,14 @@ func (r *Button) Render(ctx context.Context, w io.Writer) {
 			r.Yield()
 		}
 
-		io.WriteString(w, `</`)
-		io.WriteString(w, nodeName)
-		io.WriteString(w, `>`)
+		fmt.Fprintf(w, `</%s>`, nodeName)
 	}
 }
 
 func (r *Button) renderType(ctx context.Context, w io.Writer) {
 	switch r.Type {
 	case "submit", "reset", "button":
-		io.WriteString(w, ` type="`)
-		io.WriteString(w, r.Type)
-		io.WriteString(w, `"`)
+		fmt.Fprintf(w, ` type="%s"`, r.Type)
 	case "":
 		io.WriteString(w, ` type="button"`)
 	default:
@@ -89,11 +86,10 @@ func (r *Button) renderClass(ctx context.Context, w io.Writer) {
 	switch r.Style {
 	case "primary", "secondary", "success", "danger", "warning", "info", "light", "dark", "link":
 		if r.Outline {
-			io.WriteString(w, ` btn-outline-`)
+			fmt.Fprintf(w, ` btn-outline-%s`, r.Style)
 		} else {
-			io.WriteString(w, ` btn-`)
+			fmt.Fprintf(w, ` btn-%s`, r.Style)
 		}
-		io.WriteString(w, r.Style)
 	case "":
 	default:
 		Logger.Printf("bootstrap.Button: Invalid style: %q", r.Style)
@@ -102,8 +98,7 @@ func (r *Button) renderClass(ctx context.Context, w io.Writer) {
 	// Set button size.
 	switch r.Size {
 	case "sm", "lg":
-		io.WriteString(w, ` btn-`)
-		io.WriteString(w, r.Size)
+		fmt.Fprintf(w, ` btn-`, r.Size)
 	case "":
 	default:
 		Logger.Printf("bootstrap.Button: Invalid size: %q", r.Size)
@@ -126,49 +121,10 @@ func (r *Button) renderClass(ctx context.Context, w io.Writer) {
 
 	// Write user-defined class.
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 
 	io.WriteString(w, `"`)
-}
-
-func (r *Button) renderHref(ctx context.Context, w io.Writer) {
-	if r.Href != "" {
-		io.WriteString(w, ` href="`)
-		io.WriteString(w, html.EscapeString(r.Href))
-		io.WriteString(w, `"`)
-	}
-}
-
-func (r *Button) renderForm(ctx context.Context, w io.Writer) {
-	if r.Form != "" {
-		io.WriteString(w, ` form="`)
-		io.WriteString(w, html.EscapeString(r.Form))
-		io.WriteString(w, `"`)
-	}
-}
-
-func (r *Button) renderTarget(ctx context.Context, w io.Writer) {
-	if r.Target != "" {
-		io.WriteString(w, ` target="`)
-		io.WriteString(w, html.EscapeString(r.Target))
-		io.WriteString(w, `"`)
-	}
-}
-
-func (r *Button) renderValue(ctx context.Context, w io.Writer) {
-	if r.Value != "" {
-		io.WriteString(w, ` value="`)
-		io.WriteString(w, html.EscapeString(r.Value))
-		io.WriteString(w, `"`)
-	}
-}
-
-func (r *Button) renderDisabled(ctx context.Context, w io.Writer) {
-	if r.Disabled {
-		io.WriteString(w, ` disabled`)
-	}
 }
 
 type ButtonGroup struct {
@@ -198,8 +154,7 @@ func (r *ButtonGroup) renderClass(ctx context.Context, w io.Writer) {
 	// Write size class.
 	switch r.Size {
 	case "sm", "lg":
-		io.WriteString(w, ` btn-group-`)
-		io.WriteString(w, r.Size)
+		fmt.Fprintf(w, ` btn-group-%s`, r.Size)
 	case "":
 	default:
 		Logger.Printf("bootstrap.ButtonGroup: Invalid size: %q", r.Size)
@@ -212,8 +167,7 @@ func (r *ButtonGroup) renderClass(ctx context.Context, w io.Writer) {
 
 	// Write user-defined class.
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 
 	io.WriteString(w, `"`)
@@ -243,8 +197,7 @@ func (r *ButtonToolbar) Render(ctx context.Context, w io.Writer) {
 func (r *ButtonToolbar) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="btn-toolbar`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 
 	io.WriteString(w, `"`)
@@ -280,8 +233,7 @@ func (r *CloseButton) Render(ctx context.Context, w io.Writer) {
 func (r *CloseButton) renderClass(ctx context.Context, w io.Writer) {
 	io.WriteString(w, ` class="close`)
 	if s := r.Class; s != "" {
-		io.WriteString(w, " ")
-		io.WriteString(w, html.EscapeString(s))
+		fmt.Fprintf(w, " %s", html.EscapeString(s))
 	}
 
 	io.WriteString(w, `"`)
