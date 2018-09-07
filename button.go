@@ -98,7 +98,7 @@ func (r *Button) renderClass(ctx context.Context, w io.Writer) {
 	// Set button size.
 	switch r.Size {
 	case "sm", "lg":
-		fmt.Fprintf(w, ` btn-`, r.Size)
+		fmt.Fprintf(w, ` btn-%s`, r.Size)
 	case "":
 	default:
 		Logger.Printf("bootstrap.Button: Invalid size: %q", r.Size)
