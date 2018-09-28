@@ -19,6 +19,7 @@ type Button struct {
 	Value    string
 	Target   string
 	Size     string // "sm","lg"
+	Title    string
 	Outline  bool
 	Block    bool
 	Active   bool
@@ -48,6 +49,7 @@ func (r *Button) Render(ctx context.Context, w io.Writer) {
 	writeAttr(w, "form", r.Form)
 	writeAttr(w, "target", r.Target)
 	writeAttr(w, "value", r.Value)
+	writeAttr(w, "title", r.Title)
 	if r.Disabled {
 		io.WriteString(w, ` disabled`)
 	}
